@@ -1,0 +1,65 @@
+program ControleSerial
+
+dim recebe  as string[6]  'Recebe os valores de comandos ou pulsação.
+dim tmpOn   as integer    'Tempo de acionamento das bobinas.
+dim tmpOff  as integer    'Tempo de desligamento das bobinas.
+dim valor   as integer    'Converte o valor string recebido em número.
+dim direcao as boolean    'Determina a direção --> False=Sentido horário.
+dim passo   as boolean    'Booleana que determina os passos
+                          'True 7.5 -- False 3.75
+
+'****************************************************************
+' Procedure de contagem do número de ciclos para pulsar no driver
+'****************************************************************
+sub procedure ciclo(dim cl as integer)
+    dim x as integer 'Controle do laço
+    '**********************************************
+    'Envia comando troca de direção.
+    '**********************************************
+    if direcao=true then PORTC.1=1 delay_ms(10) PORTC.1=0 direcao=false end if
+    '*************************************************************
+    'Envia comando de troca de passo entre 7.5 e 3.75 e vice-versa
+    '*************************************************************
+    if passo=true then PORTC.2=1 delay_ms(10) PORTC.2=0 passo=false end if
+
+    '**********************************************
+    'Laço de pulsos
+    '**********************************************
+    for x=1 to cl step 1
+        PORTC.0=1
+        vdelay_ms(tmpOn)
+        PORTC.0=0
+        vdelay_ms(tmpOff)
+    next x
+
+end sub
+
+main:
+TRISA=%11111111
+TRISB=%01111111
+TRISC=%00000000
+INTCON=%00000000
+ANSEL=%00000000
+ANSELH=%00000000
+
+PORTC=0
+Usart_Init(9600)
+tmpOn=25       ' Colocar 25 para usar no simulador.
+tmpOff=25
+direcao=false   ' Inicia em sentido horário
+passo=false     ' Inicia em passos de 3.75
+
+executa:
+        '**********************************************
+        ' Recebe comandos por porta serial.
+        '**********************************************
+        if Usart_Data_Ready() then
+           Usart_Read_Text(recebe,"/") 'Recebe o valor até que chegue /
+           Usart_Write_Text(recebe)
+           valor=StrToInt(recebe)
+           if valor<1000 then ciclo(valor) end if 'Envia o número de pulsos.
+           if valor=1000 then direcao=true end if 'Determina a mudança de direção.
+           if valor=1002 then passo=true end if   'Determina a mudança de passo.
+        end if
+        goto executa
+end.
