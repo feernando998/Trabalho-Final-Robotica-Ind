@@ -1,30 +1,32 @@
 program ControleSerial
 
-dim recebe  as string[6]  'Recebe os valores de comandos ou pulsação.
-dim tmpOn   as integer    'Tempo de acionamento das bobinas.
-dim tmpOff  as integer    'Tempo de desligamento das bobinas.
-dim valor   as integer    'Converte o valor string recebido em número.
+dim recebe  as string[6]
+dim tmpOn   as integer
+dim tmpOff  as integer
+dim valor   as integer
 dim direcao as boolean    'Determina a direção --> False=Sentido horário.
-dim passo   as boolean    'Booleana que determina os passos
-                          'True 7.5 -- False 3.75
+dim passo   as boolean    ''True 7.5 -- False 3.75
 
-'****************************************************************
-' Procedure de contagem do número de ciclos para pulsar no driver
-'****************************************************************
+
 sub procedure ciclo(dim cl as integer)
-    dim x as integer 'Controle do laço
-    '**********************************************
-    'Envia comando troca de direção.
-    '**********************************************
-    if direcao=true then PORTC.1=1 delay_ms(10) PORTC.1=0 direcao=false end if
-    '*************************************************************
-    'Envia comando de troca de passo entre 7.5 e 3.75 e vice-versa
-    '*************************************************************
-    if passo=true then PORTC.2=1 delay_ms(10) PORTC.2=0 passo=false end if
 
-    '**********************************************
-    'Laço de pulsos
-    '**********************************************
+    dim x as integer
+
+    if direcao=true then
+       PORTC.1=1
+       delay_ms(10)
+       PORTC.1=0
+       direcao=false
+    end if
+
+    'Envia comando de troca de passo entre 7.5 e 3.75 e vice-versa
+    if passo=true then
+       PORTC.2=1
+       delay_ms(10)
+       PORTC.2=0
+       passo=false
+    end if
+
     for x=1 to cl step 1
         PORTC.0=1
         vdelay_ms(tmpOn)
@@ -50,16 +52,25 @@ direcao=false   ' Inicia em sentido horário
 passo=false     ' Inicia em passos de 3.75
 
 executa:
-        '**********************************************
-        ' Recebe comandos por porta serial.
-        '**********************************************
+
         if Usart_Data_Ready() then
-           Usart_Read_Text(recebe,"/") 'Recebe o valor até que chegue /
+           Usart_Read_Text(recebe,"/")
            Usart_Write_Text(recebe)
            valor=StrToInt(recebe)
-           if valor<1000 then ciclo(valor) end if 'Envia o número de pulsos.
-           if valor=1000 then direcao=true end if 'Determina a mudança de direção.
-           if valor=1002 then passo=true end if   'Determina a mudança de passo.
+           
+           if valor<1000 then 'Envia o número de pulsos.
+              ciclo(valor)
+           end if
+           
+           if valor=1000 then  'Determina a mudança de direção.
+              direcao=true
+           end if
+           
+           if valor=1002 then  'Determina a mudança de passo.
+              passo=true
+           end if
+           
         end if
+        
         goto executa
 end.

@@ -1,0 +1,9 @@
+D:\Faculdade\10º Termo\Robótica Industrial\Trabalho Final - Robo\Trabalho-Final-Robotica-Ind\projeto\Vs\Controlador\Controlador\bin\Debug\Controlador.exe
+D:\Faculdade\10º Termo\Robótica Industrial\Trabalho Final - Robo\Trabalho-Final-Robotica-Ind\projeto\Vs\Controlador\Controlador\bin\Debug\Controlador.pdb
+D:\Faculdade\10º Termo\Robótica Industrial\Trabalho Final - Robo\Trabalho-Final-Robotica-Ind\projeto\Vs\Controlador\Controlador\bin\Debug\Controlador.xml
+D:\Faculdade\10º Termo\Robótica Industrial\Trabalho Final - Robo\Trabalho-Final-Robotica-Ind\projeto\Vs\Controlador\Controlador\obj\x86\Debug\WindowsApplication1.FrmMP.resources
+D:\Faculdade\10º Termo\Robótica Industrial\Trabalho Final - Robo\Trabalho-Final-Robotica-Ind\projeto\Vs\Controlador\Controlador\obj\x86\Debug\WindowsApplication1.Resources.resources
+D:\Faculdade\10º Termo\Robótica Industrial\Trabalho Final - Robo\Trabalho-Final-Robotica-Ind\projeto\Vs\Controlador\Controlador\obj\x86\Debug\Controlador.vbproj.GenerateResource.Cache
+D:\Faculdade\10º Termo\Robótica Industrial\Trabalho Final - Robo\Trabalho-Final-Robotica-Ind\projeto\Vs\Controlador\Controlador\obj\x86\Debug\Controlador.exe
+D:\Faculdade\10º Termo\Robótica Industrial\Trabalho Final - Robo\Trabalho-Final-Robotica-Ind\projeto\Vs\Controlador\Controlador\obj\x86\Debug\Controlador.xml
+D:\Faculdade\10º Termo\Robótica Industrial\Trabalho Final - Robo\Trabalho-Final-Robotica-Ind\projeto\Vs\Controlador\Controlador\obj\x86\Debug\Controlador.pdb

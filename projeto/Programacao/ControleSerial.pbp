@@ -22,7 +22,8 @@ SimDebug=0
 [ProjectFiles]
 Count=0
 [OtherFiles]
-Count=0
+Count=1
+Value0=D:\Faculdade\10º Termo\Robótica Industrial\Trabalho Final - Robo\Trabalho-Final-Robotica-Ind\projeto\Programacao\ControleSerial.pbas
 [TabIndex]
 Value=0
 [SearchPath]
