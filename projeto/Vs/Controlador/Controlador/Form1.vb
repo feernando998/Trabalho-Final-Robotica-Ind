@@ -1,7 +1,6 @@
 ﻿Public Class FrmMP
 
     Sub RealizaCalculo()
-
         Dim aux As Integer
 
         txtBoxCiclos.Text = Int(txtBoxAngulo.Text / txtBoxPassos.Text)
@@ -10,7 +9,36 @@
         If (txtBoxAngulo.Text / txtBoxPassos.Text) - Int(txtBoxAngulo.Text / txtBoxPassos.Text) >= 0.5 Then
             txtBoxCiclos.Text = txtBoxCiclos.Text * 1 + 1
         End If
+    End Sub
 
+    Private Sub FrmMP_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        If Serial.IsOpen = False Then
+            Serial.Open()
+        End If
+    End Sub
+
+    Private Sub btnEnviar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEnviar.Click
+        RealizaCalculo()
+
+        If (Serial.IsOpen() = True) Then
+            Serial.Write(Str(txtBoxCiclos.Text) + "/")
+        End If
+
+        txtBoxEnviado.Text = (txtBoxCiclos.Text * 1) & "/"
+    End Sub
+
+    Private Sub btnInverteSent_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnInverteSent.Click
+        If Serial.IsOpen() = True Then
+            Serial.Write("1000/")
+        End If
+        txtBoxEnviado.Text = "1000/"
+    End Sub
+
+    Private Sub btnWH_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnWH.Click
+        If Serial.IsOpen() = True Then
+            Serial.Write("1002/")
+        End If
+        txtBoxEnviado.Text = "1002/"
     End Sub
 
     Private Sub btnCalcular_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCalcular.Click

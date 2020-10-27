@@ -40,16 +40,14 @@ Partial Class FrmMP
         Me.btnAng18 = New System.Windows.Forms.Button()
         Me.btnAng09 = New System.Windows.Forms.Button()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.btnInverteSent = New System.Windows.Forms.Button()
         Me.btnCalcular = New System.Windows.Forms.Button()
         Me.btnWH = New System.Windows.Forms.Button()
         Me.btnEnviar = New System.Windows.Forms.Button()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.Label5 = New System.Windows.Forms.Label()
         Me.txtBoxEnviado = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Serial = New System.IO.Ports.SerialPort(Me.components)
-        Me.CheckBoxSentido = New System.Windows.Forms.CheckBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -73,6 +71,7 @@ Partial Class FrmMP
         '
         'txtBoxCiclos
         '
+        Me.txtBoxCiclos.Cursor = System.Windows.Forms.Cursors.No
         Me.txtBoxCiclos.Location = New System.Drawing.Point(101, 71)
         Me.txtBoxCiclos.Name = "txtBoxCiclos"
         Me.txtBoxCiclos.ReadOnly = True
@@ -81,12 +80,13 @@ Partial Class FrmMP
         '
         'txtBoxPassos
         '
+        Me.txtBoxPassos.Cursor = System.Windows.Forms.Cursors.No
         Me.txtBoxPassos.Location = New System.Drawing.Point(101, 44)
         Me.txtBoxPassos.Name = "txtBoxPassos"
         Me.txtBoxPassos.ReadOnly = True
         Me.txtBoxPassos.Size = New System.Drawing.Size(41, 20)
         Me.txtBoxPassos.TabIndex = 4
-        Me.txtBoxPassos.Text = "1.8"
+        Me.txtBoxPassos.Text = "1,8"
         '
         'txtBoxAngulo
         '
@@ -141,79 +141,87 @@ Partial Class FrmMP
         '
         'btnAng180
         '
+        Me.btnAng180.BackColor = System.Drawing.SystemColors.ControlLightLight
         Me.btnAng180.Location = New System.Drawing.Point(163, 64)
         Me.btnAng180.Name = "btnAng180"
         Me.btnAng180.Size = New System.Drawing.Size(46, 23)
         Me.btnAng180.TabIndex = 7
         Me.btnAng180.Text = "180"
-        Me.btnAng180.UseVisualStyleBackColor = True
+        Me.btnAng180.UseVisualStyleBackColor = False
         '
         'btnAng90
         '
+        Me.btnAng90.BackColor = System.Drawing.SystemColors.ControlLightLight
         Me.btnAng90.Location = New System.Drawing.Point(111, 64)
         Me.btnAng90.Name = "btnAng90"
         Me.btnAng90.Size = New System.Drawing.Size(46, 23)
         Me.btnAng90.TabIndex = 6
         Me.btnAng90.Text = "90"
-        Me.btnAng90.UseVisualStyleBackColor = True
+        Me.btnAng90.UseVisualStyleBackColor = False
         '
         'btnAng60
         '
+        Me.btnAng60.BackColor = System.Drawing.SystemColors.ControlLightLight
         Me.btnAng60.Location = New System.Drawing.Point(59, 64)
         Me.btnAng60.Name = "btnAng60"
         Me.btnAng60.Size = New System.Drawing.Size(46, 23)
         Me.btnAng60.TabIndex = 5
         Me.btnAng60.Text = "60"
-        Me.btnAng60.UseVisualStyleBackColor = True
+        Me.btnAng60.UseVisualStyleBackColor = False
         '
         'btnAng45
         '
+        Me.btnAng45.BackColor = System.Drawing.SystemColors.ControlLightLight
         Me.btnAng45.Location = New System.Drawing.Point(6, 64)
         Me.btnAng45.Name = "btnAng45"
         Me.btnAng45.Size = New System.Drawing.Size(46, 23)
         Me.btnAng45.TabIndex = 4
         Me.btnAng45.Text = "45"
-        Me.btnAng45.UseVisualStyleBackColor = True
+        Me.btnAng45.UseVisualStyleBackColor = False
         '
         'btnAng30
         '
+        Me.btnAng30.BackColor = System.Drawing.SystemColors.ControlLightLight
         Me.btnAng30.Location = New System.Drawing.Point(163, 20)
         Me.btnAng30.Name = "btnAng30"
         Me.btnAng30.Size = New System.Drawing.Size(46, 23)
         Me.btnAng30.TabIndex = 3
         Me.btnAng30.Text = "30"
-        Me.btnAng30.UseVisualStyleBackColor = True
+        Me.btnAng30.UseVisualStyleBackColor = False
         '
         'btnAng15
         '
+        Me.btnAng15.BackColor = System.Drawing.SystemColors.ControlLightLight
         Me.btnAng15.Location = New System.Drawing.Point(111, 20)
         Me.btnAng15.Name = "btnAng15"
         Me.btnAng15.Size = New System.Drawing.Size(46, 23)
         Me.btnAng15.TabIndex = 2
         Me.btnAng15.Text = "15"
-        Me.btnAng15.UseVisualStyleBackColor = True
+        Me.btnAng15.UseVisualStyleBackColor = False
         '
         'btnAng18
         '
+        Me.btnAng18.BackColor = System.Drawing.SystemColors.ControlLightLight
         Me.btnAng18.Location = New System.Drawing.Point(59, 20)
         Me.btnAng18.Name = "btnAng18"
         Me.btnAng18.Size = New System.Drawing.Size(46, 23)
         Me.btnAng18.TabIndex = 1
         Me.btnAng18.Text = "1.8"
-        Me.btnAng18.UseVisualStyleBackColor = True
+        Me.btnAng18.UseVisualStyleBackColor = False
         '
         'btnAng09
         '
+        Me.btnAng09.BackColor = System.Drawing.SystemColors.ControlLightLight
         Me.btnAng09.Location = New System.Drawing.Point(7, 20)
         Me.btnAng09.Name = "btnAng09"
         Me.btnAng09.Size = New System.Drawing.Size(46, 23)
         Me.btnAng09.TabIndex = 0
         Me.btnAng09.Text = "0.9"
-        Me.btnAng09.UseVisualStyleBackColor = True
+        Me.btnAng09.UseVisualStyleBackColor = False
         '
         'GroupBox3
         '
-        Me.GroupBox3.Controls.Add(Me.CheckBoxSentido)
+        Me.GroupBox3.Controls.Add(Me.btnInverteSent)
         Me.GroupBox3.Controls.Add(Me.btnCalcular)
         Me.GroupBox3.Controls.Add(Me.btnWH)
         Me.GroupBox3.Controls.Add(Me.btnEnviar)
@@ -224,65 +232,61 @@ Partial Class FrmMP
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Comandos:"
         '
+        'btnInverteSent
+        '
+        Me.btnInverteSent.BackColor = System.Drawing.SystemColors.ControlLightLight
+        Me.btnInverteSent.Location = New System.Drawing.Point(74, 19)
+        Me.btnInverteSent.Name = "btnInverteSent"
+        Me.btnInverteSent.Size = New System.Drawing.Size(96, 23)
+        Me.btnInverteSent.TabIndex = 9
+        Me.btnInverteSent.Text = "Inverter sentido"
+        Me.btnInverteSent.UseVisualStyleBackColor = False
+        '
         'btnCalcular
         '
+        Me.btnCalcular.BackColor = System.Drawing.SystemColors.ControlLightLight
         Me.btnCalcular.Location = New System.Drawing.Point(6, 48)
         Me.btnCalcular.Name = "btnCalcular"
         Me.btnCalcular.Size = New System.Drawing.Size(62, 23)
         Me.btnCalcular.TabIndex = 8
         Me.btnCalcular.Text = "Calcular"
-        Me.btnCalcular.UseVisualStyleBackColor = True
+        Me.btnCalcular.UseVisualStyleBackColor = False
         '
         'btnWH
         '
+        Me.btnWH.BackColor = System.Drawing.SystemColors.ControlLightLight
         Me.btnWH.Location = New System.Drawing.Point(74, 48)
         Me.btnWH.Name = "btnWH"
         Me.btnWH.Size = New System.Drawing.Size(96, 23)
         Me.btnWH.TabIndex = 7
         Me.btnWH.Text = "Wave / Half"
-        Me.btnWH.UseVisualStyleBackColor = True
+        Me.btnWH.UseVisualStyleBackColor = False
         '
         'btnEnviar
         '
+        Me.btnEnviar.BackColor = System.Drawing.SystemColors.ControlLightLight
         Me.btnEnviar.Location = New System.Drawing.Point(6, 19)
         Me.btnEnviar.Name = "btnEnviar"
         Me.btnEnviar.Size = New System.Drawing.Size(62, 23)
         Me.btnEnviar.TabIndex = 5
         Me.btnEnviar.Text = "Enviar"
-        Me.btnEnviar.UseVisualStyleBackColor = True
+        Me.btnEnviar.UseVisualStyleBackColor = False
         '
         'GroupBox4
         '
-        Me.GroupBox4.Controls.Add(Me.TextBox2)
-        Me.GroupBox4.Controls.Add(Me.Label5)
         Me.GroupBox4.Controls.Add(Me.txtBoxEnviado)
         Me.GroupBox4.Controls.Add(Me.Label4)
-        Me.GroupBox4.Location = New System.Drawing.Point(195, 119)
+        Me.GroupBox4.Location = New System.Drawing.Point(195, 141)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(199, 85)
+        Me.GroupBox4.Size = New System.Drawing.Size(199, 49)
         Me.GroupBox4.TabIndex = 3
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Status (serial):"
         '
-        'TextBox2
-        '
-        Me.TextBox2.Location = New System.Drawing.Point(61, 50)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(76, 20)
-        Me.TextBox2.TabIndex = 6
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(6, 53)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(56, 13)
-        Me.Label5.TabIndex = 5
-        Me.Label5.Text = "Recebido:"
-        '
         'txtBoxEnviado
         '
-        Me.txtBoxEnviado.Location = New System.Drawing.Point(61, 21)
+        Me.txtBoxEnviado.Cursor = System.Windows.Forms.Cursors.No
+        Me.txtBoxEnviado.Location = New System.Drawing.Point(86, 19)
         Me.txtBoxEnviado.Name = "txtBoxEnviado"
         Me.txtBoxEnviado.ReadOnly = True
         Me.txtBoxEnviado.Size = New System.Drawing.Size(76, 20)
@@ -291,7 +295,7 @@ Partial Class FrmMP
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(6, 24)
+        Me.Label4.Location = New System.Drawing.Point(31, 22)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(49, 13)
         Me.Label4.TabIndex = 0
@@ -301,25 +305,18 @@ Partial Class FrmMP
         '
         Me.Serial.PortName = "COM4"
         '
-        'CheckBoxSentido
-        '
-        Me.CheckBoxSentido.AutoSize = True
-        Me.CheckBoxSentido.Location = New System.Drawing.Point(76, 23)
-        Me.CheckBoxSentido.Name = "CheckBoxSentido"
-        Me.CheckBoxSentido.Size = New System.Drawing.Size(99, 17)
-        Me.CheckBoxSentido.TabIndex = 9
-        Me.CheckBoxSentido.Text = "Inverter sentido"
-        Me.CheckBoxSentido.UseVisualStyleBackColor = True
-        '
         'FrmMP
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.ClientSize = New System.Drawing.Size(406, 214)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
+        Me.Cursor = System.Windows.Forms.Cursors.Default
+        Me.MaximizeBox = False
         Me.Name = "FrmMP"
         Me.ShowIcon = False
         Me.Text = "Controlador "
@@ -327,7 +324,6 @@ Partial Class FrmMP
         Me.GroupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox3.ResumeLayout(False)
-        Me.GroupBox3.PerformLayout()
         Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox4.PerformLayout()
         Me.ResumeLayout(False)
@@ -354,11 +350,9 @@ Partial Class FrmMP
     Friend WithEvents btnWH As System.Windows.Forms.Button
     Friend WithEvents btnEnviar As System.Windows.Forms.Button
     Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox
-    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
-    Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents txtBoxEnviado As System.Windows.Forms.TextBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents Serial As System.IO.Ports.SerialPort
-    Friend WithEvents CheckBoxSentido As System.Windows.Forms.CheckBox
+    Friend WithEvents btnInverteSent As System.Windows.Forms.Button
 
 End Class

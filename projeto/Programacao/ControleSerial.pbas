@@ -4,8 +4,8 @@ dim recebe  as string[6]
 dim tmpOn   as integer
 dim tmpOff  as integer
 dim valor   as integer
-dim direcao as boolean    'Determina a direção --> False=Sentido horário.
-dim passo   as boolean    ''True 7.5 -- False 3.75
+dim direcao as boolean    'False = Sentido horário.
+dim passo   as boolean    'True = 7.5, False = 3.75
 
 
 sub procedure ciclo(dim cl as integer)
@@ -48,7 +48,7 @@ PORTC=0
 Usart_Init(9600)
 tmpOn=25       ' Colocar 25 para usar no simulador.
 tmpOff=25
-direcao=false   ' Inicia em sentido horário
+direcao=true   ' Inicia em sentido horário
 passo=false     ' Inicia em passos de 3.75
 
 executa:
