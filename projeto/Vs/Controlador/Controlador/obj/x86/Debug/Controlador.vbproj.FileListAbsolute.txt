@@ -7,3 +7,12 @@ D:\Faculdade\10º Termo\Robótica Industrial\Trabalho Final - Robo\Trabalho-Fina
 D:\Faculdade\10º Termo\Robótica Industrial\Trabalho Final - Robo\Trabalho-Final-Robotica-Ind\projeto\Vs\Controlador\Controlador\obj\x86\Debug\Controlador.exe
 D:\Faculdade\10º Termo\Robótica Industrial\Trabalho Final - Robo\Trabalho-Final-Robotica-Ind\projeto\Vs\Controlador\Controlador\obj\x86\Debug\Controlador.xml
 D:\Faculdade\10º Termo\Robótica Industrial\Trabalho Final - Robo\Trabalho-Final-Robotica-Ind\projeto\Vs\Controlador\Controlador\obj\x86\Debug\Controlador.pdb
+C:\Users\pedro\OneDrive\faculdade\10_Semestre\Robotica Industrial\Trabalho-Final-Robotica-Ind\projeto\Vs\Controlador\Controlador\obj\x86\Debug\Controlador.exe
+C:\Users\pedro\OneDrive\faculdade\10_Semestre\Robotica Industrial\Trabalho-Final-Robotica-Ind\projeto\Vs\Controlador\Controlador\obj\x86\Debug\Controlador.xml
+C:\Users\pedro\OneDrive\faculdade\10_Semestre\Robotica Industrial\Trabalho-Final-Robotica-Ind\projeto\Vs\Controlador\Controlador\obj\x86\Debug\Controlador.pdb
+C:\Users\pedro\OneDrive\faculdade\10_Semestre\Robotica Industrial\Trabalho-Final-Robotica-Ind\projeto\Vs\Controlador\Controlador\bin\Debug\Controlador.exe
+C:\Users\pedro\OneDrive\faculdade\10_Semestre\Robotica Industrial\Trabalho-Final-Robotica-Ind\projeto\Vs\Controlador\Controlador\bin\Debug\Controlador.pdb
+C:\Users\pedro\OneDrive\faculdade\10_Semestre\Robotica Industrial\Trabalho-Final-Robotica-Ind\projeto\Vs\Controlador\Controlador\bin\Debug\Controlador.xml
+C:\Users\pedro\OneDrive\faculdade\10_Semestre\Robotica Industrial\Trabalho-Final-Robotica-Ind\projeto\Vs\Controlador\Controlador\obj\x86\Debug\WindowsApplication1.FrmMP.resources
+C:\Users\pedro\OneDrive\faculdade\10_Semestre\Robotica Industrial\Trabalho-Final-Robotica-Ind\projeto\Vs\Controlador\Controlador\obj\x86\Debug\WindowsApplication1.Resources.resources
+C:\Users\pedro\OneDrive\faculdade\10_Semestre\Robotica Industrial\Trabalho-Final-Robotica-Ind\projeto\Vs\Controlador\Controlador\obj\x86\Debug\Controlador.vbproj.GenerateResource.Cache
