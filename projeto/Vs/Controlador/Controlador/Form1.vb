@@ -1,13 +1,15 @@
 ﻿Public Class FrmMP
 
     Sub RealizaCalculo()
-        Dim aux As Integer
+        Dim aux As Double
 
-        txtBoxCiclos.Text = Int(txtBoxAngulo.Text / txtBoxPassos.Text)
+        txtBoxCiclos.Text = CDbl(txtBoxAngulo.Text / txtBoxPassos.Text)
         aux = txtBoxAngulo.Text / txtBoxPassos.Text
 
-        If (txtBoxAngulo.Text / txtBoxPassos.Text) - Int(txtBoxAngulo.Text / txtBoxPassos.Text) >= 0.5 Then
+        If (txtBoxAngulo.Text / txtBoxPassos.Text) - Int(txtBoxAngulo.Text / txtBoxPassos.Text) > 0.5 Then
             txtBoxCiclos.Text = txtBoxCiclos.Text * 1 + 1
+        Else
+            txtBoxCiclos.Text = txtBoxCiclos.Text * 1
         End If
     End Sub
 
