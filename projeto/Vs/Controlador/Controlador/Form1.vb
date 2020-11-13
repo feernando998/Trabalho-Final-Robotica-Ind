@@ -2,11 +2,18 @@
 
     Sub RealizaCalculo()
         Dim aux As Double
+        Dim angulo As Integer
 
-        txtBoxCiclos.Text = CDbl(txtBoxAngulo.Text / txtBoxPassos.Text)
-        aux = txtBoxAngulo.Text / txtBoxPassos.Text
+        If CInt(txtBoxAngulo.Text) < 0 Then
+            angulo = CInt(txtBoxAngulo.Text) * -1
+        Else
+            angulo = CInt(txtBoxAngulo.Text)
+        End If
 
-        If (txtBoxAngulo.Text / txtBoxPassos.Text) - Int(txtBoxAngulo.Text / txtBoxPassos.Text) > 0.5 Then
+        txtBoxCiclos.Text = CDbl(angulo / txtBoxPassos.Text)
+        aux = angulo / txtBoxPassos.Text
+
+        If (angulo / txtBoxPassos.Text) - Int(angulo / txtBoxPassos.Text) > 0.5 Then
             txtBoxCiclos.Text = txtBoxCiclos.Text * 1 + 1
         Else
             txtBoxCiclos.Text = txtBoxCiclos.Text * 1
@@ -22,13 +29,14 @@
 
         cmbMotor.SelectedIndex = 0
         motor = 1000
+        lblAngulo.Text = "Ângulo (-180 a 180):"
     End Sub
 
     Private Sub btnEnviar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEnviar.Click
         RealizaCalculo()
 
         If (Serial.IsOpen() = True) Then
-            If chkInverter.Checked Then
+            If CInt(txtBoxAngulo.Text) < 0 Then
                 Serial.Write(Str(motor + txtBoxCiclos.Text) + "\inv/")
                 txtBoxEnviado.Text = motor + (txtBoxCiclos.Text * 1) & "\inv/"
             Else
@@ -124,16 +132,22 @@
     Private Sub cmbMotor_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbMotor.SelectedIndexChanged
         If cmbMotor.SelectedIndex = 0 Then
             motor = 1000
+            lblAngulo.Text = "Ângulo (-180 a 180):"
         ElseIf cmbMotor.SelectedIndex = 1 Then
             motor = 2000
+            lblAngulo.Text = "Ângulo (-190 a 110):"
         ElseIf cmbMotor.SelectedIndex = 2 Then
             motor = 3000
+            lblAngulo.Text = "Ângulo (-230 a 50):"
         ElseIf cmbMotor.SelectedIndex = 3 Then
             motor = 4000
+            lblAngulo.Text = "Ângulo (-200 a 200):"
         ElseIf cmbMotor.SelectedIndex = 4 Then
             motor = 5000
+            lblAngulo.Text = "Ângulo (-120 a 120):"
         ElseIf cmbMotor.SelectedIndex = 5 Then
             motor = 6000
+            lblAngulo.Text = "Ângulo (-400 a 400):"
         End If
     End Sub
 End Class

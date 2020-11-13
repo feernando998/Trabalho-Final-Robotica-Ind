@@ -24,13 +24,12 @@ Partial Class FrmMP
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.chkInverter = New System.Windows.Forms.CheckBox()
         Me.txtBoxCiclos = New System.Windows.Forms.TextBox()
         Me.txtBoxPassos = New System.Windows.Forms.TextBox()
         Me.txtBoxAngulo = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.lblAngulo = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.chkNumNegativo = New System.Windows.Forms.CheckBox()
         Me.btnAng180 = New System.Windows.Forms.Button()
@@ -62,13 +61,12 @@ Partial Class FrmMP
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.chkInverter)
         Me.GroupBox1.Controls.Add(Me.txtBoxCiclos)
         Me.GroupBox1.Controls.Add(Me.txtBoxPassos)
         Me.GroupBox1.Controls.Add(Me.txtBoxAngulo)
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.Label2)
-        Me.GroupBox1.Controls.Add(Me.Label1)
+        Me.GroupBox1.Controls.Add(Me.lblAngulo)
         Me.GroupBox1.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(237, 80)
         Me.GroupBox1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
@@ -79,23 +77,10 @@ Partial Class FrmMP
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Configuração:"
         '
-        'chkInverter
-        '
-        Me.chkInverter.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chkInverter.Location = New System.Drawing.Point(73, 41)
-        Me.chkInverter.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.chkInverter.Name = "chkInverter"
-        Me.chkInverter.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.chkInverter.Size = New System.Drawing.Size(109, 17)
-        Me.chkInverter.TabIndex = 9
-        Me.chkInverter.Text = ":Inverter"
-        Me.chkInverter.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.chkInverter.UseVisualStyleBackColor = True
-        '
         'txtBoxCiclos
         '
         Me.txtBoxCiclos.Cursor = System.Windows.Forms.Cursors.No
-        Me.txtBoxCiclos.Location = New System.Drawing.Point(140, 89)
+        Me.txtBoxCiclos.Location = New System.Drawing.Point(140, 68)
         Me.txtBoxCiclos.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.txtBoxCiclos.Name = "txtBoxCiclos"
         Me.txtBoxCiclos.ReadOnly = True
@@ -105,7 +90,7 @@ Partial Class FrmMP
         'txtBoxPassos
         '
         Me.txtBoxPassos.Cursor = System.Windows.Forms.Cursors.No
-        Me.txtBoxPassos.Location = New System.Drawing.Point(140, 62)
+        Me.txtBoxPassos.Location = New System.Drawing.Point(140, 41)
         Me.txtBoxPassos.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.txtBoxPassos.Name = "txtBoxPassos"
         Me.txtBoxPassos.ReadOnly = True
@@ -126,7 +111,7 @@ Partial Class FrmMP
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(85, 92)
+        Me.Label3.Location = New System.Drawing.Point(85, 71)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(49, 13)
         Me.Label3.TabIndex = 2
@@ -136,21 +121,21 @@ Partial Class FrmMP
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(85, 65)
+        Me.Label2.Location = New System.Drawing.Point(85, 44)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(49, 13)
         Me.Label2.TabIndex = 1
         Me.Label2.Text = "Passos:"
         '
-        'Label1
+        'lblAngulo
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(8, 20)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(109, 13)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Ângulo (0 a 180):"
+        Me.lblAngulo.AutoSize = True
+        Me.lblAngulo.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAngulo.Location = New System.Drawing.Point(6, 20)
+        Me.lblAngulo.Name = "lblAngulo"
+        Me.lblAngulo.Size = New System.Drawing.Size(127, 13)
+        Me.lblAngulo.TabIndex = 0
+        Me.lblAngulo.Text = "Ângulo (-180 a 180):"
         '
         'GroupBox2
         '
@@ -402,7 +387,7 @@ Partial Class FrmMP
         '
         Me.cmbMotor.Font = New System.Drawing.Font("Consolas", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbMotor.FormattingEnabled = True
-        Me.cmbMotor.Items.AddRange(New Object() {"Motor 1", "Motor 2", "Motor 3", "Motor 4", "Motor 5", "Motor 6"})
+        Me.cmbMotor.Items.AddRange(New Object() {"Theta 1", "Theta 2", "Theta 3", "Theta 4", "Theta 5", "Theta 6"})
         Me.cmbMotor.Location = New System.Drawing.Point(56, 20)
         Me.cmbMotor.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.cmbMotor.Name = "cmbMotor"
@@ -426,7 +411,7 @@ Partial Class FrmMP
         Me.MaximizeBox = False
         Me.Name = "FrmMP"
         Me.ShowIcon = False
-        Me.Text = "Controlador "
+        Me.Text = "Controlador ABB IRB 140"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
@@ -444,7 +429,7 @@ Partial Class FrmMP
     Friend WithEvents txtBoxAngulo As System.Windows.Forms.TextBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents lblAngulo As System.Windows.Forms.Label
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
     Friend WithEvents btnAng180 As System.Windows.Forms.Button
     Friend WithEvents btnAng90 As System.Windows.Forms.Button
@@ -467,6 +452,5 @@ Partial Class FrmMP
     Friend WithEvents cmbMotor As System.Windows.Forms.ComboBox
     Friend WithEvents txtRecebido As System.Windows.Forms.TextBox
     Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents chkInverter As System.Windows.Forms.CheckBox
 
 End Class
