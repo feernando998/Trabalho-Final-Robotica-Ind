@@ -58,7 +58,7 @@ borda=false
 borda2=false
 borda3=false
 borda4=false
-direcao=true
+direcao=false
 revolucao=true 'Quando true 400 pulsos por revolução
                'Se false 200 pulsos por revolução.
 
