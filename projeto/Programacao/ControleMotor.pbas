@@ -1,9 +1,10 @@
 program ControleMotor
 
 dim passo     as integer  'Contador de passo e representa as bobinas.
-dim borda     as boolean  'Detecção de borda para o sinal de pulso.
-dim borda2    as boolean  'Detecção de borda para o sinal de direção.
-dim borda3    as boolean  'Detecção de borda para o sinal de pulsos/revolução.
+dim borda     as boolean  'Detecção de borda para o sinal de pulso para o motor 1.
+dim borda2    as boolean  'Detecção de borda para o sinal de pulso para o motor 2.
+dim borda3    as boolean  'Detecção de borda para o sinal de direção.
+dim borda4    as boolean  'Detecção de borda para o sinal de pulsos/revolução.
 dim direcao   as boolean  'Define o sentido de contagem das bobinas.
 dim revolucao as boolean  'Define como será o formato de onda:
                           'True --> 400 pulsos por revolução 0,9°.
@@ -56,6 +57,7 @@ passo=0
 borda=false
 borda2=false
 borda3=false
+borda4=false
 direcao=false
 revolucao=true 'Quando true 400 pulsos por revolução
                'Se false 200 pulsos por revolução.
@@ -71,13 +73,21 @@ executa:
            end if
         end if
         if testbit(porta,0)=0 then borda=false end if
+        
+        if testbit(porta,1)=1 then
+           if borda2=false then
+              borda2=true
+              pulso()
+           end if
+        end if
+        if testbit(porta,0)=0 then borda2=false end if
 
         '****************************************
         ' Pulso de mudança de direção.
         '****************************************
-        if testbit(porta,1)=1 then
-           if borda2=false then
-              borda2=true
+        if testbit(porta,2)=1 then
+           if borda3=false then
+              borda3=true
               if direcao = false then direcao=true else direcao=false end if
            end if
         end if
@@ -86,9 +96,9 @@ executa:
         '*****************************************
         ' Pulso para alternar entre 400 ou 200 ppr
         '*****************************************
-        if testbit(porta,2)=1 then
-           if borda3=false then
-              borda3=true
+        if testbit(porta,3)=1 then
+           if borda4=false then
+              borda4=true
               if revolucao=false then
                  revolucao = true
               else
@@ -97,7 +107,7 @@ executa:
               end if
            end if
         end if
-        if testbit(porta,2)=0 then borda3=false end if
+        if testbit(porta,2)=0 then borda4=false end if
         
        'reset
        'if testbit(porta,3) = 1 then

@@ -1,22 +1,25 @@
 program ControleSerial
 
-dim recebe  as string[6]
-dim tmpOn   as integer
-dim tmpOff  as integer
-dim valor   as integer
-dim direcao as boolean    'False = Sentido horário.
-dim passo   as boolean    'True = 7.5, False = 3.75
+dim recMotor   as string[6]
+dim recDirec   as string[6]
+dim tmpOn      as integer
+dim tmpOff     as integer
+dim valor      as integer
+dim sentAntHor as boolean    'False = Sentido horário.
+dim passo      as boolean    'True = 7.5, False = 3.75
+dim motor      as integer
+dim ciclos     as integer
 
 
-sub procedure ciclo(dim cl as integer)
+sub procedure ciclo(dim cl as integer, dim valPorta as integer)
 
     dim x as integer
 
-    if direcao=true then
+    if sentAntHor=true then
        PORTC.1=1
        delay_ms(10)
        PORTC.1=0
-       direcao=false
+       sentAntHor=false
     end if
 
     'Envia comando de troca de passo entre 7.5 e 3.75 e vice-versa
@@ -28,9 +31,9 @@ sub procedure ciclo(dim cl as integer)
     end if
 
     for x=1 to cl step 1
-        PORTC.0=1
+        setbit(PORTC, valPorta)
         vdelay_ms(tmpOn)
-        PORTC.0=0
+        clearbit(PORTC, valPorta)
         vdelay_ms(tmpOff)
     next x
 
@@ -45,30 +48,45 @@ ANSEL=%00000000
 ANSELH=%00000000
 
 PORTC=0
-Usart_Init(9600)
+
 tmpOn=25       ' Colocar 25 para usar no simulador.
 tmpOff=25
-direcao=true   ' Inicia em sentido horário
+
+sentAntHor=false   ' Inicia em sentido horário
 passo=false     ' Inicia em passos de 3.75
+
+Usart_Init(9600)
 
 executa:
 
         if Usart_Data_Ready() then
-           Usart_Read_Text(recebe,"/")
-           Usart_Write_Text(recebe)
-           valor=StrToInt(recebe)
+           Usart_Read_Text(recMotor,"\")
+           Usart_Read_Text(recDirec,"/")
+'           Usart_Write_Text(recebe)
+           valor = StrToInt(recMotor)
            
-           if valor<1000 then 'Envia o número de pulsos.
-              ciclo(valor)
+           motor = valor div 1000
+           ciclos = valor - (motor * 1000)
+           
+           if motor=1 then 'Envia o número de pulsos.
+              ciclo(ciclos, 0)
            end if
            
-           if valor=1000 then  'Determina a mudança de direção.
-              direcao=true
+           if motor=2 then 'Envia o número de pulsos.
+              ciclo(ciclos, 1)
            end if
            
-           if valor=1002 then  'Determina a mudança de passo.
-              passo=true
+           if strcmp(recDirec, "inv") = 0 then  'Determina a mudança de direção.
+              sentAntHor=true
            end if
+           
+           if strcmp(recDirec, "nor") = 0 then
+              sentAntHor=false
+           end if
+           
+'           if valor=1002 then  'Determina a mudança de passo.
+'              passo=true
+'           end if
            
         end if
         
