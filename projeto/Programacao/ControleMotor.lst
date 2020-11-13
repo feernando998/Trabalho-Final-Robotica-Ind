@@ -606,7 +606,7 @@ $0184	$01A5			CLRF	_borda3, 1
 $0185	$01A6			CLRF	_borda4, 1
 ;ControleMotor.pbas,88 :: 		dirAntHor=false
 $0186	$01A7			CLRF	_diranthor, 1
-;ControleMotor.pbas,89 :: 		revolucao=true 'Quando true 400 pulsos por revolução
+;ControleMotor.pbas,89 :: 		revolucao=true 'Quando true 400 pulsos por revoluï¿½ï¿½o
 $0187	$30FF			MOVLW	255
 $0188	$00A0			MOVWF	_revolucao
 ;ControleMotor.pbas,92 :: 		executa:
