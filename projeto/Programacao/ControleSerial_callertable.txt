@@ -3,10 +3,10 @@ main
 	Div_16x16_S
 		Div_16x16_S_L
 	USART_Init
-	strcmp
 	ciclo
 		VDelay_ms
 			Mul_32x32_U
+	strcmp
 	StrToInt
 		Div_32x32_S
 			COMFREM

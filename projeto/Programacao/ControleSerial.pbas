@@ -15,27 +15,25 @@ sub procedure ciclo(dim cl as integer, dim valPorta as integer)
 
     dim x as integer
 
-    if sentAntHor=true then
-       PORTC.1=1
-       delay_ms(10)
-       PORTC.1=0
-       sentAntHor=false
-    end if
-
     'Envia comando de troca de passo entre 7.5 e 3.75 e vice-versa
     if passo=true then
-       PORTC.2=1
+       PORTC.3=1
        delay_ms(10)
-       PORTC.2=0
+       PORTC.3=0
        passo=false
     end if
-
+    
     for x=1 to cl step 1
+        if sentAntHor=true then
+           PORTC.2=1
+        end if
         setbit(PORTC, valPorta)
         vdelay_ms(tmpOn)
         clearbit(PORTC, valPorta)
         vdelay_ms(tmpOff)
     next x
+    sentAntHor = false
+    PORTC.2 = 0
 
 end sub
 
@@ -62,32 +60,31 @@ executa:
         if Usart_Data_Ready() then
            Usart_Read_Text(recMotor,"\")
            Usart_Read_Text(recDirec,"/")
-'           Usart_Write_Text(recebe)
            valor = StrToInt(recMotor)
-           
-           motor = valor div 1000
-           ciclos = valor - (motor * 1000)
-           
-           if motor=1 then 'Envia o número de pulsos.
-              ciclo(ciclos, 0)
-           end if
-           
-           if motor=2 then 'Envia o número de pulsos.
-              ciclo(ciclos, 1)
-           end if
            
            if strcmp(recDirec, "inv") = 0 then  'Determina a mudança de direção.
               sentAntHor=true
            end if
-           
+
            if strcmp(recDirec, "nor") = 0 then
               sentAntHor=false
+           end if
+           
+           motor = valor div 1000
+           ciclos = valor - (motor * 1000)
+
+           if motor=1 then 'Envia o número de pulsos.
+              ciclo(ciclos, 0)
+           end if
+
+           if motor=2 then 'Envia o número de pulsos.
+              ciclo(ciclos, 1)
            end if
            
 '           if valor=1002 then  'Determina a mudança de passo.
 '              passo=true
 '           end if
-           
+
         end if
         
         goto executa

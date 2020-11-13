@@ -5,42 +5,68 @@ dim borda     as boolean  'Detecção de borda para o sinal de pulso para o motor 
 dim borda2    as boolean  'Detecção de borda para o sinal de pulso para o motor 2.
 dim borda3    as boolean  'Detecção de borda para o sinal de direção.
 dim borda4    as boolean  'Detecção de borda para o sinal de pulsos/revolução.
-dim direcao   as boolean  'Define o sentido de contagem das bobinas.
+dim dirAntHor  as boolean  'Define o sentido de contagem das bobinas.
 dim revolucao as boolean  'Define como será o formato de onda:
                           'True --> 400 pulsos por revolução 0,9°.
                           'False -> 200 pulsos por revolução 1,8°.
 
-sub procedure pulso()
+sub procedure pulso(dim motor as integer, dim inverte as boolean)
     if revolucao = true then
-       if direcao = false then
-          inc(passo)
-          if passo > 8 then passo=1 end if
+       if inverte = false then
+           dec(passo)
+           if passo < 1 then passo=8 end if
+        end if
+        if inverte = true then
+           inc(passo)
+           if passo > 8 then passo=1 end if
+        end if
+       
+       if motor = 1 then
+          if passo=1 then PORTC=9 end if
+          if passo=2 then PORTC=8 end if
+          if passo=3 then PORTC=12 end if
+          if passo=4 then PORTC=4 end if
+          if passo=5 then PORTC=6 end if
+          if passo=6 then PORTC=2 end if
+          if passo=7 then PORTC=3 end if
+          if passo=8 then PORTC=1 end if
        end if
-       if direcao = true then
-          dec(passo)
-          if passo < 1 then passo=8 end if
+       
+       if motor = 2 then
+          if passo=1 then PORTC=144 end if
+          if passo=2 then PORTC=128 end if
+          if passo=3 then PORTC=192 end if
+          if passo=4 then PORTC=64 end if
+          if passo=5 then PORTC=97 end if
+          if passo=6 then PORTC=32 end if
+          if passo=7 then PORTC=48 end if
+          if passo=8 then PORTC=16 end if
        end if
-       if passo=1 then PORTC=%00001001 end if
-       if passo=2 then PORTC=%00001000 end if
-       if passo=3 then PORTC=%00001100 end if
-       if passo=4 then PORTC=%00000100 end if
-       if passo=5 then PORTC=%00000110 end if
-       if passo=6 then PORTC=%00000010 end if
-       if passo=7 then PORTC=%00000011 end if
-       if passo=8 then PORTC=%00000001 end if
+
     else
-        if direcao = false then
+        if inverte = false then
            inc(passo)
            if passo > 4 then passo=1 end if
         end if
-        if direcao = true then
+        if inverte = true then
            dec(passo)
            if passo < 1 then passo=4 end if
         end if
-        if passo=1 then PORTC=%00001000 end if
-        if passo=2 then PORTC=%00000100 end if
-        if passo=3 then PORTC=%00000010 end if
-        if passo=4 then PORTC=%00000001 end if
+        
+        if motor = 1 then
+           if passo=1 then PORTC=8 end if
+           if passo=2 then PORTC=4 end if
+           if passo=3 then PORTC=2 end if
+           if passo=4 then PORTC=1 end if
+        end if
+        
+        if motor = 2 then
+           if passo=1 then PORTC=128 end if
+           if passo=2 then PORTC=64  end if
+           if passo=3 then PORTC=32  end if
+           if passo=4 then PORTC=16  end if
+        end if
+
      end if
 end sub
 
@@ -53,45 +79,48 @@ ANSEL=%00000000
 ANSELH=%00000000
 
 PORTC=0
+
 passo=0
 borda=false
 borda2=false
 borda3=false
 borda4=false
-direcao=false
+dirAntHor=false
 revolucao=true 'Quando true 400 pulsos por revolução
-               'Se false 200 pulsos por revolução.
+               'Quando false 200 pulsos por revolução.
 
 executa:
+
         '****************************************
-        ' Controle de pulso.
+        ' Controle de pulso do Motor 1
         '****************************************
         if testbit(porta,0)=1 then
            if borda=false then
               borda=true
-              pulso()
+              pulso(1, dirAntHor)
            end if
         end if
         if testbit(porta,0)=0 then borda=false end if
         
+        '****************************************
+        ' Controle de pulso do Motor 2
+        '****************************************
         if testbit(porta,1)=1 then
            if borda2=false then
               borda2=true
-              pulso()
+              pulso(2, dirAntHor)
            end if
         end if
-        if testbit(porta,0)=0 then borda2=false end if
-
+        if testbit(porta,1)=0 then borda2=false end if
+        
         '****************************************
         ' Pulso de mudança de direção.
         '****************************************
         if testbit(porta,2)=1 then
-           if borda3=false then
-              borda3=true
-              if direcao = false then direcao=true else direcao=false end if
-           end if
+           dirAntHor = true
+        else
+            dirAntHor = false
         end if
-        if testbit(porta,1)=0 then borda2=false end if
 
         '*****************************************
         ' Pulso para alternar entre 400 ou 200 ppr
@@ -107,7 +136,7 @@ executa:
               end if
            end if
         end if
-        if testbit(porta,2)=0 then borda4=false end if
+        if testbit(porta,3)=0 then borda4=false end if
         
        'reset
        'if testbit(porta,3) = 1 then

@@ -24,6 +24,7 @@ Partial Class FrmMP
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.chkInverter = New System.Windows.Forms.CheckBox()
         Me.txtBoxCiclos = New System.Windows.Forms.TextBox()
         Me.txtBoxPassos = New System.Windows.Forms.TextBox()
         Me.txtBoxAngulo = New System.Windows.Forms.TextBox()
@@ -31,6 +32,7 @@ Partial Class FrmMP
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.chkNumNegativo = New System.Windows.Forms.CheckBox()
         Me.btnAng180 = New System.Windows.Forms.Button()
         Me.btnAng90 = New System.Windows.Forms.Button()
         Me.btnAng60 = New System.Windows.Forms.Button()
@@ -44,15 +46,13 @@ Partial Class FrmMP
         Me.btnWH = New System.Windows.Forms.Button()
         Me.btnEnviar = New System.Windows.Forms.Button()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.txtRecebido = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.txtBoxEnviado = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Serial = New System.IO.Ports.SerialPort(Me.components)
-        Me.chkNumNegativo = New System.Windows.Forms.CheckBox()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
         Me.cmbMotor = New System.Windows.Forms.ComboBox()
-        Me.txtRecebido = New System.Windows.Forms.TextBox()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.chkInverter = New System.Windows.Forms.CheckBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -78,6 +78,19 @@ Partial Class FrmMP
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Configuração:"
+        '
+        'chkInverter
+        '
+        Me.chkInverter.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.chkInverter.Location = New System.Drawing.Point(73, 41)
+        Me.chkInverter.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.chkInverter.Name = "chkInverter"
+        Me.chkInverter.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.chkInverter.Size = New System.Drawing.Size(109, 17)
+        Me.chkInverter.TabIndex = 9
+        Me.chkInverter.Text = ":Inverter"
+        Me.chkInverter.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.chkInverter.UseVisualStyleBackColor = True
         '
         'txtBoxCiclos
         '
@@ -135,9 +148,9 @@ Partial Class FrmMP
         Me.Label1.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.Location = New System.Drawing.Point(8, 20)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(127, 13)
+        Me.Label1.Size = New System.Drawing.Size(109, 13)
         Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Ângulo (-180 a 180):"
+        Me.Label1.Text = "Ângulo (0 a 180):"
         '
         'GroupBox2
         '
@@ -159,6 +172,18 @@ Partial Class FrmMP
         Me.GroupBox2.TabIndex = 1
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Ângulos predefinidos:"
+        '
+        'chkNumNegativo
+        '
+        Me.chkNumNegativo.AutoSize = True
+        Me.chkNumNegativo.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.chkNumNegativo.Location = New System.Drawing.Point(9, 88)
+        Me.chkNumNegativo.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.chkNumNegativo.Name = "chkNumNegativo"
+        Me.chkNumNegativo.Size = New System.Drawing.Size(74, 17)
+        Me.chkNumNegativo.TabIndex = 8
+        Me.chkNumNegativo.Text = "Negativo"
+        Me.chkNumNegativo.UseVisualStyleBackColor = True
         '
         'btnAng180
         '
@@ -315,6 +340,26 @@ Partial Class FrmMP
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Status (serial):"
         '
+        'txtRecebido
+        '
+        Me.txtRecebido.Cursor = System.Windows.Forms.Cursors.No
+        Me.txtRecebido.Location = New System.Drawing.Point(86, 47)
+        Me.txtRecebido.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.txtRecebido.Name = "txtRecebido"
+        Me.txtRecebido.ReadOnly = True
+        Me.txtRecebido.Size = New System.Drawing.Size(76, 20)
+        Me.txtRecebido.TabIndex = 6
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(26, 50)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(61, 13)
+        Me.Label5.TabIndex = 5
+        Me.Label5.Text = "Recebido:"
+        '
         'txtBoxEnviado
         '
         Me.txtBoxEnviado.Cursor = System.Windows.Forms.Cursors.No
@@ -338,18 +383,6 @@ Partial Class FrmMP
         'Serial
         '
         Me.Serial.PortName = "COM4"
-        '
-        'chkNumNegativo
-        '
-        Me.chkNumNegativo.AutoSize = True
-        Me.chkNumNegativo.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chkNumNegativo.Location = New System.Drawing.Point(9, 88)
-        Me.chkNumNegativo.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.chkNumNegativo.Name = "chkNumNegativo"
-        Me.chkNumNegativo.Size = New System.Drawing.Size(74, 17)
-        Me.chkNumNegativo.TabIndex = 8
-        Me.chkNumNegativo.Text = "Negativo"
-        Me.chkNumNegativo.UseVisualStyleBackColor = True
         '
         'GroupBox5
         '
@@ -375,39 +408,6 @@ Partial Class FrmMP
         Me.cmbMotor.Name = "cmbMotor"
         Me.cmbMotor.Size = New System.Drawing.Size(121, 27)
         Me.cmbMotor.TabIndex = 0
-        '
-        'txtRecebido
-        '
-        Me.txtRecebido.Cursor = System.Windows.Forms.Cursors.No
-        Me.txtRecebido.Location = New System.Drawing.Point(86, 47)
-        Me.txtRecebido.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.txtRecebido.Name = "txtRecebido"
-        Me.txtRecebido.ReadOnly = True
-        Me.txtRecebido.Size = New System.Drawing.Size(76, 20)
-        Me.txtRecebido.TabIndex = 6
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(26, 50)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(61, 13)
-        Me.Label5.TabIndex = 5
-        Me.Label5.Text = "Recebido:"
-        '
-        'chkInverter
-        '
-        Me.chkInverter.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chkInverter.Location = New System.Drawing.Point(73, 41)
-        Me.chkInverter.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.chkInverter.Name = "chkInverter"
-        Me.chkInverter.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.chkInverter.Size = New System.Drawing.Size(109, 17)
-        Me.chkInverter.TabIndex = 9
-        Me.chkInverter.Text = ":Inverter"
-        Me.chkInverter.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.chkInverter.UseVisualStyleBackColor = True
         '
         'FrmMP
         '
