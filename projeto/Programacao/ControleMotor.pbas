@@ -83,7 +83,6 @@ executa:
         end if
         if testbit(porta,1)=0 then borda2=false end if
 
-
         '*****************************************
         ' Pulso para alternar entre 400 ou 200 ppr
         '*****************************************
@@ -100,8 +99,8 @@ executa:
         end if
         if testbit(porta,2)=0 then borda3=false end if
         
-        'reset
-       ' if testbit(porta,3) = 1 then
+       'reset
+       'if testbit(porta,3) = 1 then
 
        ' end if
         
