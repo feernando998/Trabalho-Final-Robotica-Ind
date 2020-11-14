@@ -20,6 +20,40 @@
         End If
     End Sub
 
+    Sub alteraVisibilidade(
+            ByVal btn1 As Boolean,
+            ByVal btn2 As Boolean,
+            ByVal btn3 As Boolean,
+            ByVal btn4 As Boolean,
+            ByVal btn5 As Boolean,
+            ByVal btn6 As Boolean,
+            ByVal btn7 As Boolean,
+            ByVal btn8 As Boolean,
+            ByVal btn9 As Boolean,
+            ByVal btn10 As Boolean,
+            ByVal btn11 As Boolean,
+            ByVal btn12 As Boolean,
+            ByVal btn13 As Boolean,
+            ByVal btn14 As Boolean,
+            ByVal btn15 As Boolean
+        )
+        btnAng09.Visible = btn1
+        btnAng18.Visible = btn2
+        btnAng15.Visible = btn3
+        btnAng30.Visible = btn4
+        btnAng45.Visible = btn5
+        btnAng60.Visible = btn6
+        btnAng90.Visible = btn7
+        btnAng180.Visible = btn8
+        btnAng200.Visible = btn9
+        btnAng230.Visible = btn10
+        btnAng270.Visible = btn11
+        btnAng300.Visible = btn12
+        btnAng330.Visible = btn13
+        btnAng360.Visible = btn14
+        btnAng400.Visible = btn15
+    End Sub
+
     Dim motor As Integer
 
     Private Sub FrmMP_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -30,6 +64,7 @@
         cmbMotor.SelectedIndex = 0
         motor = 1000
         lblAngulo.Text = "Ângulo (-180 a 180):"
+        alteraVisibilidade(True, True, True, True, True, True, True, True, False, False, False, False, False, False, False)
     End Sub
 
     Private Sub btnEnviar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEnviar.Click
@@ -63,6 +98,42 @@
 
     Private Sub btnCalcular_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCalcular.Click
         RealizaCalculo()
+    End Sub
+
+    Private Sub cmbMotor_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbMotor.SelectedIndexChanged
+        If cmbMotor.SelectedIndex = 0 Then
+            motor = 1000
+            lblAngulo.Text = "Ângulo (-180 a 180):"
+            alteraVisibilidade(True, True, True, True, True, True, True, True, False, False, False, False, False, False, False)
+        ElseIf cmbMotor.SelectedIndex = 1 Then
+            motor = 2000
+            lblAngulo.Text = "Ângulo (-190 a 110):"
+            If chkNumNegativo.Checked Then
+                alteraVisibilidade(True, True, True, True, True, True, True, True, False, False, False, False, False, False, False)
+            Else
+                alteraVisibilidade(True, True, True, True, True, True, True, False, False, False, False, False, False, False, False)
+            End If
+        ElseIf cmbMotor.SelectedIndex = 2 Then
+            motor = 3000
+            lblAngulo.Text = "Ângulo (-230 a 50):"
+            If chkNumNegativo.Checked Then
+                alteraVisibilidade(True, True, True, True, True, True, True, True, True, False, False, False, False, False, False)
+            Else
+                alteraVisibilidade(True, True, True, True, True, False, False, False, False, False, False, False, False, False, False)
+            End If
+        ElseIf cmbMotor.SelectedIndex = 3 Then
+            motor = 4000
+            lblAngulo.Text = "Ângulo (-200 a 200):"
+            alteraVisibilidade(True, True, True, True, True, True, True, True, True, False, False, False, False, False, False)
+        ElseIf cmbMotor.SelectedIndex = 4 Then
+            motor = 5000
+            lblAngulo.Text = "Ângulo (-120 a 120):"
+            alteraVisibilidade(True, True, True, True, True, True, True, False, False, False, False, False, False, False, False)
+        ElseIf cmbMotor.SelectedIndex = 5 Then
+            motor = 6000
+            lblAngulo.Text = "Ângulo (-400 a 400):"
+            alteraVisibilidade(True, True, True, True, True, True, True, True, True, True, True, True, True, True, True)
+        End If
     End Sub
 
     Private Sub btnAng09_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAng09.Click
@@ -129,25 +200,83 @@
         End If
     End Sub
 
-    Private Sub cmbMotor_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbMotor.SelectedIndexChanged
+    Private Sub btnAng200_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAng200.Click
+        If chkNumNegativo.Checked Then
+            txtBoxAngulo.Text = -200 * 1
+        Else
+            txtBoxAngulo.Text = 200 * 1
+        End If
+    End Sub
+
+    Private Sub btnAng230_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAng230.Click
+        If chkNumNegativo.Checked Then
+            txtBoxAngulo.Text = -230 * 1
+        Else
+            txtBoxAngulo.Text = 230 * 1
+        End If
+    End Sub
+
+    Private Sub btnAng270_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAng270.Click
+        If chkNumNegativo.Checked Then
+            txtBoxAngulo.Text = -270 * 1
+        Else
+            txtBoxAngulo.Text = 270 * 1
+        End If
+    End Sub
+
+    Private Sub btnAng300_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAng300.Click
+        If chkNumNegativo.Checked Then
+            txtBoxAngulo.Text = -300 * 1
+        Else
+            txtBoxAngulo.Text = 300 * 1
+        End If
+    End Sub
+
+    Private Sub btnAng330_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAng330.Click
+        If chkNumNegativo.Checked Then
+            txtBoxAngulo.Text = -330 * 1
+        Else
+            txtBoxAngulo.Text = 330 * 1
+        End If
+    End Sub
+
+    Private Sub btnAng360_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAng360.Click
+        If chkNumNegativo.Checked Then
+            txtBoxAngulo.Text = -360 * 1
+        Else
+            txtBoxAngulo.Text = 360 * 1
+        End If
+    End Sub
+
+    Private Sub btnAng400_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAng400.Click
+        If chkNumNegativo.Checked Then
+            txtBoxAngulo.Text = -400 * 1
+        Else
+            txtBoxAngulo.Text = 400 * 1
+        End If
+    End Sub
+
+    Private Sub chkNumNegativo_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
         If cmbMotor.SelectedIndex = 0 Then
-            motor = 1000
-            lblAngulo.Text = "Ângulo (-180 a 180):"
+            alteraVisibilidade(True, True, True, True, True, True, True, True, False, False, False, False, False, False, False)
         ElseIf cmbMotor.SelectedIndex = 1 Then
-            motor = 2000
-            lblAngulo.Text = "Ângulo (-190 a 110):"
+            If chkNumNegativo.Checked Then
+                alteraVisibilidade(True, True, True, True, True, True, True, True, False, False, False, False, False, False, False)
+            Else
+                alteraVisibilidade(True, True, True, True, True, True, True, False, False, False, False, False, False, False, False)
+            End If
         ElseIf cmbMotor.SelectedIndex = 2 Then
-            motor = 3000
-            lblAngulo.Text = "Ângulo (-230 a 50):"
+            If chkNumNegativo.Checked Then
+                alteraVisibilidade(True, True, True, True, True, True, True, True, True, True, False, False, False, False, False)
+            Else
+                alteraVisibilidade(True, True, True, True, True, False, False, False, False, False, False, False, False, False, False)
+            End If
         ElseIf cmbMotor.SelectedIndex = 3 Then
-            motor = 4000
-            lblAngulo.Text = "Ângulo (-200 a 200):"
+            alteraVisibilidade(True, True, True, True, True, True, True, True, True, False, False, False, False, False, False)
         ElseIf cmbMotor.SelectedIndex = 4 Then
-            motor = 5000
-            lblAngulo.Text = "Ângulo (-120 a 120):"
+            alteraVisibilidade(True, True, True, True, True, True, True, False, False, False, False, False, False, False, False)
         ElseIf cmbMotor.SelectedIndex = 5 Then
-            motor = 6000
-            lblAngulo.Text = "Ângulo (-400 a 400):"
+            alteraVisibilidade(True, True, True, True, True, True, True, True, True, True, True, True, True, True, True)
         End If
     End Sub
 End Class
