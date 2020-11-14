@@ -1,7 +1,7 @@
 ﻿Public Class FrmMP
 
     Sub RealizaCalculo()
-        Dim aux As Double
+        Dim aux As Integer
         Dim angulo As Integer
 
         If CInt(txtBoxAngulo.Text) < 0 Then
@@ -10,7 +10,7 @@
             angulo = CInt(txtBoxAngulo.Text)
         End If
 
-        txtBoxCiclos.Text = CDbl(angulo / txtBoxPassos.Text)
+        txtBoxCiclos.Text = CInt(angulo / txtBoxPassos.Text)
         aux = angulo / txtBoxPassos.Text
 
         If (angulo / txtBoxPassos.Text) - Int(angulo / txtBoxPassos.Text) > 0.5 Then
@@ -110,7 +110,7 @@
             alteraVisibilidade(True, True, True, True, True, True, True, True, False, False, False, False, False, False, False)
         ElseIf cmbMotor.SelectedIndex = 1 Then
             motor = 2000
-            lblAngMin.Text = "-190º"
+            lblAngMin.Text = "-90º"
             lblAngMax.Text = "110º"
             trbAngT1.Minimum = -90
             trbAngT1.Maximum = 110
@@ -310,4 +310,12 @@
         txtBoxAngulo.Text = trbAngT1.Value
     End Sub
 
+    Private Sub txtBoxAngulo_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBoxAngulo.TextChanged
+        If (txtBoxAngulo.Text.Trim <> "") And (txtBoxAngulo.Text.Trim <> "-") And (txtBoxAngulo.Text.Trim <> "+") Then
+            If (txtBoxAngulo.Text > trbAngT1.Maximum) Or (txtBoxAngulo.Text < trbAngT1.Minimum) Then
+                Return
+            End If
+            trbAngT1.Value = txtBoxAngulo.Text
+        End If
+    End Sub
 End Class
