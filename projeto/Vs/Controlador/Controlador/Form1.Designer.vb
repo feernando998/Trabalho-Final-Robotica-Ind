@@ -24,6 +24,8 @@ Partial Class FrmMP
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.btnPas0_9 = New System.Windows.Forms.Button()
+        Me.btnPas1_8 = New System.Windows.Forms.Button()
         Me.txtBoxCiclos = New System.Windows.Forms.TextBox()
         Me.txtBoxPassos = New System.Windows.Forms.TextBox()
         Me.txtBoxAngulo = New System.Windows.Forms.TextBox()
@@ -31,6 +33,14 @@ Partial Class FrmMP
         Me.Label2 = New System.Windows.Forms.Label()
         Me.lblAngulo = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.chkNumNegativo = New System.Windows.Forms.CheckBox()
+        Me.btnAng400 = New System.Windows.Forms.Button()
+        Me.btnAng360 = New System.Windows.Forms.Button()
+        Me.btnAng330 = New System.Windows.Forms.Button()
+        Me.btnAng300 = New System.Windows.Forms.Button()
+        Me.btnAng270 = New System.Windows.Forms.Button()
+        Me.btnAng230 = New System.Windows.Forms.Button()
+        Me.btnAng200 = New System.Windows.Forms.Button()
         Me.btnAng180 = New System.Windows.Forms.Button()
         Me.btnAng90 = New System.Windows.Forms.Button()
         Me.btnAng60 = New System.Windows.Forms.Button()
@@ -51,14 +61,6 @@ Partial Class FrmMP
         Me.Serial = New System.IO.Ports.SerialPort(Me.components)
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
         Me.cmbMotor = New System.Windows.Forms.ComboBox()
-        Me.btnAng200 = New System.Windows.Forms.Button()
-        Me.btnAng230 = New System.Windows.Forms.Button()
-        Me.btnAng270 = New System.Windows.Forms.Button()
-        Me.btnAng300 = New System.Windows.Forms.Button()
-        Me.btnAng330 = New System.Windows.Forms.Button()
-        Me.btnAng360 = New System.Windows.Forms.Button()
-        Me.btnAng400 = New System.Windows.Forms.Button()
-        Me.chkNumNegativo = New System.Windows.Forms.CheckBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -68,6 +70,8 @@ Partial Class FrmMP
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.btnPas0_9)
+        Me.GroupBox1.Controls.Add(Me.btnPas1_8)
         Me.GroupBox1.Controls.Add(Me.txtBoxCiclos)
         Me.GroupBox1.Controls.Add(Me.txtBoxPassos)
         Me.GroupBox1.Controls.Add(Me.txtBoxAngulo)
@@ -83,6 +87,24 @@ Partial Class FrmMP
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Configuração:"
+        '
+        'btnPas0_9
+        '
+        Me.btnPas0_9.Location = New System.Drawing.Point(94, 102)
+        Me.btnPas0_9.Name = "btnPas0_9"
+        Me.btnPas0_9.Size = New System.Drawing.Size(88, 23)
+        Me.btnPas0_9.TabIndex = 7
+        Me.btnPas0_9.Text = "0,9"
+        Me.btnPas0_9.UseVisualStyleBackColor = True
+        '
+        'btnPas1_8
+        '
+        Me.btnPas1_8.Location = New System.Drawing.Point(6, 102)
+        Me.btnPas1_8.Name = "btnPas1_8"
+        Me.btnPas1_8.Size = New System.Drawing.Size(82, 23)
+        Me.btnPas1_8.TabIndex = 6
+        Me.btnPas1_8.Text = "1,8"
+        Me.btnPas1_8.UseVisualStyleBackColor = True
         '
         'txtBoxCiclos
         '
@@ -171,6 +193,102 @@ Partial Class FrmMP
         Me.GroupBox2.TabIndex = 1
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Ângulos predefinidos:"
+        '
+        'chkNumNegativo
+        '
+        Me.chkNumNegativo.AutoSize = True
+        Me.chkNumNegativo.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.chkNumNegativo.Location = New System.Drawing.Point(12, 23)
+        Me.chkNumNegativo.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.chkNumNegativo.Name = "chkNumNegativo"
+        Me.chkNumNegativo.Size = New System.Drawing.Size(74, 17)
+        Me.chkNumNegativo.TabIndex = 16
+        Me.chkNumNegativo.Text = "Negativo"
+        Me.chkNumNegativo.UseVisualStyleBackColor = True
+        '
+        'btnAng400
+        '
+        Me.btnAng400.BackColor = System.Drawing.SystemColors.ControlLightLight
+        Me.btnAng400.Location = New System.Drawing.Point(115, 130)
+        Me.btnAng400.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.btnAng400.Name = "btnAng400"
+        Me.btnAng400.Size = New System.Drawing.Size(46, 24)
+        Me.btnAng400.TabIndex = 15
+        Me.btnAng400.Text = "400"
+        Me.btnAng400.UseVisualStyleBackColor = False
+        Me.btnAng400.Visible = False
+        '
+        'btnAng360
+        '
+        Me.btnAng360.BackColor = System.Drawing.SystemColors.ControlLightLight
+        Me.btnAng360.Location = New System.Drawing.Point(66, 130)
+        Me.btnAng360.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.btnAng360.Name = "btnAng360"
+        Me.btnAng360.Size = New System.Drawing.Size(46, 24)
+        Me.btnAng360.TabIndex = 14
+        Me.btnAng360.Text = "360"
+        Me.btnAng360.UseVisualStyleBackColor = False
+        Me.btnAng360.Visible = False
+        '
+        'btnAng330
+        '
+        Me.btnAng330.BackColor = System.Drawing.SystemColors.ControlLightLight
+        Me.btnAng330.Location = New System.Drawing.Point(12, 130)
+        Me.btnAng330.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.btnAng330.Name = "btnAng330"
+        Me.btnAng330.Size = New System.Drawing.Size(46, 24)
+        Me.btnAng330.TabIndex = 13
+        Me.btnAng330.Text = "330"
+        Me.btnAng330.UseVisualStyleBackColor = False
+        Me.btnAng330.Visible = False
+        '
+        'btnAng300
+        '
+        Me.btnAng300.BackColor = System.Drawing.SystemColors.ControlLightLight
+        Me.btnAng300.Location = New System.Drawing.Point(167, 102)
+        Me.btnAng300.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.btnAng300.Name = "btnAng300"
+        Me.btnAng300.Size = New System.Drawing.Size(46, 24)
+        Me.btnAng300.TabIndex = 12
+        Me.btnAng300.Text = "300"
+        Me.btnAng300.UseVisualStyleBackColor = False
+        Me.btnAng300.Visible = False
+        '
+        'btnAng270
+        '
+        Me.btnAng270.BackColor = System.Drawing.SystemColors.ControlLightLight
+        Me.btnAng270.Location = New System.Drawing.Point(115, 102)
+        Me.btnAng270.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.btnAng270.Name = "btnAng270"
+        Me.btnAng270.Size = New System.Drawing.Size(46, 24)
+        Me.btnAng270.TabIndex = 11
+        Me.btnAng270.Text = "270"
+        Me.btnAng270.UseVisualStyleBackColor = False
+        Me.btnAng270.Visible = False
+        '
+        'btnAng230
+        '
+        Me.btnAng230.BackColor = System.Drawing.SystemColors.ControlLightLight
+        Me.btnAng230.Location = New System.Drawing.Point(66, 102)
+        Me.btnAng230.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.btnAng230.Name = "btnAng230"
+        Me.btnAng230.Size = New System.Drawing.Size(46, 24)
+        Me.btnAng230.TabIndex = 10
+        Me.btnAng230.Text = "230"
+        Me.btnAng230.UseVisualStyleBackColor = False
+        Me.btnAng230.Visible = False
+        '
+        'btnAng200
+        '
+        Me.btnAng200.BackColor = System.Drawing.SystemColors.ControlLightLight
+        Me.btnAng200.Location = New System.Drawing.Point(12, 102)
+        Me.btnAng200.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.btnAng200.Name = "btnAng200"
+        Me.btnAng200.Size = New System.Drawing.Size(46, 24)
+        Me.btnAng200.TabIndex = 9
+        Me.btnAng200.Text = "200"
+        Me.btnAng200.UseVisualStyleBackColor = False
+        Me.btnAng200.Visible = False
         '
         'btnAng180
         '
@@ -396,102 +514,6 @@ Partial Class FrmMP
         Me.cmbMotor.Size = New System.Drawing.Size(121, 27)
         Me.cmbMotor.TabIndex = 0
         '
-        'btnAng200
-        '
-        Me.btnAng200.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.btnAng200.Location = New System.Drawing.Point(12, 102)
-        Me.btnAng200.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.btnAng200.Name = "btnAng200"
-        Me.btnAng200.Size = New System.Drawing.Size(46, 24)
-        Me.btnAng200.TabIndex = 9
-        Me.btnAng200.Text = "200"
-        Me.btnAng200.UseVisualStyleBackColor = False
-        Me.btnAng200.Visible = False
-        '
-        'btnAng230
-        '
-        Me.btnAng230.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.btnAng230.Location = New System.Drawing.Point(66, 102)
-        Me.btnAng230.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.btnAng230.Name = "btnAng230"
-        Me.btnAng230.Size = New System.Drawing.Size(46, 24)
-        Me.btnAng230.TabIndex = 10
-        Me.btnAng230.Text = "230"
-        Me.btnAng230.UseVisualStyleBackColor = False
-        Me.btnAng230.Visible = False
-        '
-        'btnAng270
-        '
-        Me.btnAng270.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.btnAng270.Location = New System.Drawing.Point(115, 102)
-        Me.btnAng270.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.btnAng270.Name = "btnAng270"
-        Me.btnAng270.Size = New System.Drawing.Size(46, 24)
-        Me.btnAng270.TabIndex = 11
-        Me.btnAng270.Text = "270"
-        Me.btnAng270.UseVisualStyleBackColor = False
-        Me.btnAng270.Visible = False
-        '
-        'btnAng300
-        '
-        Me.btnAng300.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.btnAng300.Location = New System.Drawing.Point(167, 102)
-        Me.btnAng300.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.btnAng300.Name = "btnAng300"
-        Me.btnAng300.Size = New System.Drawing.Size(46, 24)
-        Me.btnAng300.TabIndex = 12
-        Me.btnAng300.Text = "300"
-        Me.btnAng300.UseVisualStyleBackColor = False
-        Me.btnAng300.Visible = False
-        '
-        'btnAng330
-        '
-        Me.btnAng330.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.btnAng330.Location = New System.Drawing.Point(12, 130)
-        Me.btnAng330.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.btnAng330.Name = "btnAng330"
-        Me.btnAng330.Size = New System.Drawing.Size(46, 24)
-        Me.btnAng330.TabIndex = 13
-        Me.btnAng330.Text = "330"
-        Me.btnAng330.UseVisualStyleBackColor = False
-        Me.btnAng330.Visible = False
-        '
-        'btnAng360
-        '
-        Me.btnAng360.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.btnAng360.Location = New System.Drawing.Point(66, 130)
-        Me.btnAng360.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.btnAng360.Name = "btnAng360"
-        Me.btnAng360.Size = New System.Drawing.Size(46, 24)
-        Me.btnAng360.TabIndex = 14
-        Me.btnAng360.Text = "360"
-        Me.btnAng360.UseVisualStyleBackColor = False
-        Me.btnAng360.Visible = False
-        '
-        'btnAng400
-        '
-        Me.btnAng400.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.btnAng400.Location = New System.Drawing.Point(115, 130)
-        Me.btnAng400.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.btnAng400.Name = "btnAng400"
-        Me.btnAng400.Size = New System.Drawing.Size(46, 24)
-        Me.btnAng400.TabIndex = 15
-        Me.btnAng400.Text = "400"
-        Me.btnAng400.UseVisualStyleBackColor = False
-        Me.btnAng400.Visible = False
-        '
-        'chkNumNegativo
-        '
-        Me.chkNumNegativo.AutoSize = True
-        Me.chkNumNegativo.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chkNumNegativo.Location = New System.Drawing.Point(12, 23)
-        Me.chkNumNegativo.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.chkNumNegativo.Name = "chkNumNegativo"
-        Me.chkNumNegativo.Size = New System.Drawing.Size(74, 17)
-        Me.chkNumNegativo.TabIndex = 16
-        Me.chkNumNegativo.Text = "Negativo"
-        Me.chkNumNegativo.UseVisualStyleBackColor = True
-        '
         'FrmMP
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -557,5 +579,7 @@ Partial Class FrmMP
     Friend WithEvents btnAng230 As System.Windows.Forms.Button
     Friend WithEvents btnAng200 As System.Windows.Forms.Button
     Friend WithEvents chkNumNegativo As System.Windows.Forms.CheckBox
+    Friend WithEvents btnPas0_9 As System.Windows.Forms.Button
+    Friend WithEvents btnPas1_8 As System.Windows.Forms.Button
 
 End Class

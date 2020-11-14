@@ -279,4 +279,12 @@
             alteraVisibilidade(True, True, True, True, True, True, True, True, True, True, True, True, True, True, True)
         End If
     End Sub
+
+    Private Sub btnPas1_8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPas1_8.Click
+        txtBoxPassos.Text = "1,8"
+    End Sub
+
+    Private Sub btnPas0_9_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPas0_9.Click
+        txtBoxPassos.Text = "0,9"
+    End Sub
 End Class
