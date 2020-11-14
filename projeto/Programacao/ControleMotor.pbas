@@ -37,7 +37,7 @@ sub procedure pulso(dim motor as integer, dim inverte as boolean)
           if passo=2 then PORTC=128 end if
           if passo=3 then PORTC=192 end if
           if passo=4 then PORTC=64 end if
-          if passo=5 then PORTC=97 end if
+          if passo=5 then PORTC=96 end if
           if passo=6 then PORTC=32 end if
           if passo=7 then PORTC=48 end if
           if passo=8 then PORTC=16 end if
