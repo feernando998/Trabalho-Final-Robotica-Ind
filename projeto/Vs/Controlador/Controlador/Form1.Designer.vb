@@ -24,6 +24,9 @@ Partial Class FrmMP
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.lblAngMax = New System.Windows.Forms.Label()
+        Me.lblAngMin = New System.Windows.Forms.Label()
+        Me.trbAngT1 = New System.Windows.Forms.TrackBar()
         Me.btnPas0_9 = New System.Windows.Forms.Button()
         Me.btnPas1_8 = New System.Windows.Forms.Button()
         Me.txtBoxCiclos = New System.Windows.Forms.TextBox()
@@ -62,6 +65,7 @@ Partial Class FrmMP
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
         Me.cmbMotor = New System.Windows.Forms.ComboBox()
         Me.GroupBox1.SuspendLayout()
+        CType(Me.trbAngT1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
@@ -70,6 +74,9 @@ Partial Class FrmMP
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.lblAngMax)
+        Me.GroupBox1.Controls.Add(Me.lblAngMin)
+        Me.GroupBox1.Controls.Add(Me.trbAngT1)
         Me.GroupBox1.Controls.Add(Me.btnPas0_9)
         Me.GroupBox1.Controls.Add(Me.btnPas1_8)
         Me.GroupBox1.Controls.Add(Me.txtBoxCiclos)
@@ -83,25 +90,52 @@ Partial Class FrmMP
         Me.GroupBox1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Padding = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.GroupBox1.Size = New System.Drawing.Size(188, 162)
+        Me.GroupBox1.Size = New System.Drawing.Size(308, 183)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Configuração:"
         '
+        'lblAngMax
+        '
+        Me.lblAngMax.AutoSize = True
+        Me.lblAngMax.Location = New System.Drawing.Point(268, 27)
+        Me.lblAngMax.Name = "lblAngMax"
+        Me.lblAngMax.Size = New System.Drawing.Size(31, 13)
+        Me.lblAngMax.TabIndex = 10
+        Me.lblAngMax.Text = "180º"
+        '
+        'lblAngMin
+        '
+        Me.lblAngMin.AutoSize = True
+        Me.lblAngMin.Location = New System.Drawing.Point(8, 27)
+        Me.lblAngMin.Name = "lblAngMin"
+        Me.lblAngMin.Size = New System.Drawing.Size(37, 13)
+        Me.lblAngMin.TabIndex = 9
+        Me.lblAngMin.Text = "-180º"
+        '
+        'trbAngT1
+        '
+        Me.trbAngT1.Location = New System.Drawing.Point(51, 23)
+        Me.trbAngT1.Maximum = 180
+        Me.trbAngT1.Minimum = -180
+        Me.trbAngT1.Name = "trbAngT1"
+        Me.trbAngT1.Size = New System.Drawing.Size(211, 45)
+        Me.trbAngT1.TabIndex = 8
+        '
         'btnPas0_9
         '
-        Me.btnPas0_9.Location = New System.Drawing.Point(94, 102)
+        Me.btnPas0_9.Location = New System.Drawing.Point(168, 95)
         Me.btnPas0_9.Name = "btnPas0_9"
-        Me.btnPas0_9.Size = New System.Drawing.Size(88, 23)
+        Me.btnPas0_9.Size = New System.Drawing.Size(45, 23)
         Me.btnPas0_9.TabIndex = 7
         Me.btnPas0_9.Text = "0,9"
         Me.btnPas0_9.UseVisualStyleBackColor = True
         '
         'btnPas1_8
         '
-        Me.btnPas1_8.Location = New System.Drawing.Point(6, 102)
+        Me.btnPas1_8.Location = New System.Drawing.Point(117, 95)
         Me.btnPas1_8.Name = "btnPas1_8"
-        Me.btnPas1_8.Size = New System.Drawing.Size(82, 23)
+        Me.btnPas1_8.Size = New System.Drawing.Size(45, 23)
         Me.btnPas1_8.TabIndex = 6
         Me.btnPas1_8.Text = "1,8"
         Me.btnPas1_8.UseVisualStyleBackColor = True
@@ -109,7 +143,7 @@ Partial Class FrmMP
         'txtBoxCiclos
         '
         Me.txtBoxCiclos.Cursor = System.Windows.Forms.Cursors.No
-        Me.txtBoxCiclos.Location = New System.Drawing.Point(140, 68)
+        Me.txtBoxCiclos.Location = New System.Drawing.Point(69, 124)
         Me.txtBoxCiclos.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.txtBoxCiclos.Name = "txtBoxCiclos"
         Me.txtBoxCiclos.ReadOnly = True
@@ -119,7 +153,7 @@ Partial Class FrmMP
         'txtBoxPassos
         '
         Me.txtBoxPassos.Cursor = System.Windows.Forms.Cursors.No
-        Me.txtBoxPassos.Location = New System.Drawing.Point(140, 41)
+        Me.txtBoxPassos.Location = New System.Drawing.Point(69, 97)
         Me.txtBoxPassos.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.txtBoxPassos.Name = "txtBoxPassos"
         Me.txtBoxPassos.ReadOnly = True
@@ -129,7 +163,7 @@ Partial Class FrmMP
         '
         'txtBoxAngulo
         '
-        Me.txtBoxAngulo.Location = New System.Drawing.Point(140, 17)
+        Me.txtBoxAngulo.Location = New System.Drawing.Point(69, 73)
         Me.txtBoxAngulo.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.txtBoxAngulo.Name = "txtBoxAngulo"
         Me.txtBoxAngulo.Size = New System.Drawing.Size(42, 20)
@@ -140,7 +174,7 @@ Partial Class FrmMP
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(85, 71)
+        Me.Label3.Location = New System.Drawing.Point(9, 127)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(49, 13)
         Me.Label3.TabIndex = 2
@@ -150,7 +184,7 @@ Partial Class FrmMP
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(85, 44)
+        Me.Label2.Location = New System.Drawing.Point(9, 100)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(49, 13)
         Me.Label2.TabIndex = 1
@@ -160,11 +194,11 @@ Partial Class FrmMP
         '
         Me.lblAngulo.AutoSize = True
         Me.lblAngulo.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblAngulo.Location = New System.Drawing.Point(6, 20)
+        Me.lblAngulo.Location = New System.Drawing.Point(9, 76)
         Me.lblAngulo.Name = "lblAngulo"
-        Me.lblAngulo.Size = New System.Drawing.Size(127, 13)
+        Me.lblAngulo.Size = New System.Drawing.Size(49, 13)
         Me.lblAngulo.TabIndex = 0
-        Me.lblAngulo.Text = "Ângulo (-180 a 180):"
+        Me.lblAngulo.Text = "Ângulo:"
         '
         'GroupBox2
         '
@@ -189,7 +223,7 @@ Partial Class FrmMP
         Me.GroupBox2.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Padding = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.GroupBox2.Size = New System.Drawing.Size(219, 162)
+        Me.GroupBox2.Size = New System.Drawing.Size(219, 183)
         Me.GroupBox2.TabIndex = 1
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Ângulos predefinidos:"
@@ -384,7 +418,7 @@ Partial Class FrmMP
         Me.GroupBox3.Controls.Add(Me.btnWH)
         Me.GroupBox3.Controls.Add(Me.btnEnviar)
         Me.GroupBox3.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox3.Location = New System.Drawing.Point(14, 246)
+        Me.GroupBox3.Location = New System.Drawing.Point(12, 267)
         Me.GroupBox3.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Padding = New System.Windows.Forms.Padding(3, 2, 3, 2)
@@ -436,7 +470,7 @@ Partial Class FrmMP
         Me.GroupBox4.Controls.Add(Me.txtBoxEnviado)
         Me.GroupBox4.Controls.Add(Me.Label4)
         Me.GroupBox4.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox4.Location = New System.Drawing.Point(239, 246)
+        Me.GroupBox4.Location = New System.Drawing.Point(237, 267)
         Me.GroupBox4.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.Padding = New System.Windows.Forms.Padding(3, 2, 3, 2)
@@ -494,7 +528,7 @@ Partial Class FrmMP
         Me.GroupBox5.BackColor = System.Drawing.Color.White
         Me.GroupBox5.Controls.Add(Me.cmbMotor)
         Me.GroupBox5.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox5.Location = New System.Drawing.Point(106, 12)
+        Me.GroupBox5.Location = New System.Drawing.Point(12, 13)
         Me.GroupBox5.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.GroupBox5.Name = "GroupBox5"
         Me.GroupBox5.Padding = New System.Windows.Forms.Padding(3, 2, 3, 2)
@@ -519,7 +553,7 @@ Partial Class FrmMP
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(439, 339)
+        Me.ClientSize = New System.Drawing.Size(563, 362)
         Me.Controls.Add(Me.GroupBox5)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox3)
@@ -534,6 +568,7 @@ Partial Class FrmMP
         Me.Text = "Controlador ABB IRB 140"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        CType(Me.trbAngT1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
@@ -581,5 +616,8 @@ Partial Class FrmMP
     Friend WithEvents chkNumNegativo As System.Windows.Forms.CheckBox
     Friend WithEvents btnPas0_9 As System.Windows.Forms.Button
     Friend WithEvents btnPas1_8 As System.Windows.Forms.Button
+    Friend WithEvents lblAngMax As System.Windows.Forms.Label
+    Friend WithEvents lblAngMin As System.Windows.Forms.Label
+    Friend WithEvents trbAngT1 As System.Windows.Forms.TrackBar
 
 End Class

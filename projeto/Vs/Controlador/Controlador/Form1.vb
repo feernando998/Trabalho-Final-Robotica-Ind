@@ -63,7 +63,6 @@
 
         cmbMotor.SelectedIndex = 0
         motor = 1000
-        lblAngulo.Text = "Ângulo (-180 a 180):"
         alteraVisibilidade(True, True, True, True, True, True, True, True, False, False, False, False, False, False, False)
     End Sub
 
@@ -101,13 +100,20 @@
     End Sub
 
     Private Sub cmbMotor_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbMotor.SelectedIndexChanged
+        trbAngT1.Value = 0
         If cmbMotor.SelectedIndex = 0 Then
             motor = 1000
-            lblAngulo.Text = "Ângulo (-180 a 180):"
+            lblAngMin.Text = "-180º"
+            lblAngMax.Text = "180º"
+            trbAngT1.Minimum = -180
+            trbAngT1.Maximum = 180
             alteraVisibilidade(True, True, True, True, True, True, True, True, False, False, False, False, False, False, False)
         ElseIf cmbMotor.SelectedIndex = 1 Then
             motor = 2000
-            lblAngulo.Text = "Ângulo (-190 a 110):"
+            lblAngMin.Text = "-190º"
+            lblAngMax.Text = "110º"
+            trbAngT1.Minimum = -90
+            trbAngT1.Maximum = 110
             If chkNumNegativo.Checked Then
                 alteraVisibilidade(True, True, True, True, True, True, True, True, False, False, False, False, False, False, False)
             Else
@@ -115,7 +121,10 @@
             End If
         ElseIf cmbMotor.SelectedIndex = 2 Then
             motor = 3000
-            lblAngulo.Text = "Ângulo (-230 a 50):"
+            lblAngMin.Text = "-230º"
+            lblAngMax.Text = "50º"
+            trbAngT1.Minimum = -230
+            trbAngT1.Maximum = 50
             If chkNumNegativo.Checked Then
                 alteraVisibilidade(True, True, True, True, True, True, True, True, True, False, False, False, False, False, False)
             Else
@@ -123,15 +132,24 @@
             End If
         ElseIf cmbMotor.SelectedIndex = 3 Then
             motor = 4000
-            lblAngulo.Text = "Ângulo (-200 a 200):"
+            lblAngMin.Text = "-200º"
+            lblAngMax.Text = "200º"
+            trbAngT1.Minimum = -200
+            trbAngT1.Maximum = 200
             alteraVisibilidade(True, True, True, True, True, True, True, True, True, False, False, False, False, False, False)
         ElseIf cmbMotor.SelectedIndex = 4 Then
             motor = 5000
-            lblAngulo.Text = "Ângulo (-120 a 120):"
+            lblAngMin.Text = "-120º"
+            lblAngMax.Text = "120º"
+            trbAngT1.Minimum = -120
+            trbAngT1.Maximum = 120
             alteraVisibilidade(True, True, True, True, True, True, True, False, False, False, False, False, False, False, False)
         ElseIf cmbMotor.SelectedIndex = 5 Then
             motor = 6000
-            lblAngulo.Text = "Ângulo (-400 a 400):"
+            lblAngMin.Text = "-400º"
+            lblAngMax.Text = "400º"
+            trbAngT1.Minimum = -400
+            trbAngT1.Maximum = 400
             alteraVisibilidade(True, True, True, True, True, True, True, True, True, True, True, True, True, True, True)
         End If
     End Sub
@@ -286,5 +304,9 @@
 
     Private Sub btnPas0_9_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPas0_9.Click
         txtBoxPassos.Text = "0,9"
+    End Sub
+
+    Private Sub trbAngT1_Scroll(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles trbAngT1.Scroll
+        txtBoxAngulo.Text = trbAngT1.Value
     End Sub
 End Class
