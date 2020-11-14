@@ -274,7 +274,7 @@
         End If
     End Sub
 
-    Private Sub chkNumNegativo_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    Private Sub chkNumNegativo_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkNumNegativo.CheckedChanged
         If cmbMotor.SelectedIndex = 0 Then
             alteraVisibilidade(True, True, True, True, True, True, True, True, False, False, False, False, False, False, False)
         ElseIf cmbMotor.SelectedIndex = 1 Then
@@ -309,4 +309,5 @@
     Private Sub trbAngT1_Scroll(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles trbAngT1.Scroll
         txtBoxAngulo.Text = trbAngT1.Value
     End Sub
+
 End Class
