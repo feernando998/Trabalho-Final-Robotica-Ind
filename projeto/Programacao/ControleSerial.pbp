@@ -23,14 +23,14 @@ SimDebug=0
 Count=0
 [OtherFiles]
 Count=1
-Value0=C:\Users\pedro\OneDrive\faculdade\10_Semestre\Robotica Industrial\Trabalho-Final-Robotica-Ind\projeto\Programacao\ControleSerial.pbas
+Value0=D:\Faculdade\10º Termo\Robótica Industrial\Trabalho Final - Robo\Trabalho-Final-Robotica-Ind\projeto\Programacao\ControleSerial.pbas
 [TabIndex]
 Value=0
 [SearchPath]
 Count=4
 Value0=C:\Program Files (x86)\Mikroelektronika\mikroBasic\Defs\
 Value1=C:\Program Files (x86)\Mikroelektronika\mikroBasic\Uses\p16\
-Value2=C:\Users\pedro\OneDrive\faculdade\10_Semestre\Robotica Industrial\Trabalho-Final-Robotica-Ind\projeto\Programacao\
-Value3=D:\Faculdade\10º Termo\Robótica Industrial\Trabalho Final - Robo\Trabalho-Final-Robotica-Ind\projeto\Programacao\
+Value2=D:\Faculdade\10º Termo\Robótica Industrial\Trabalho Final - Robo\Trabalho-Final-Robotica-Ind\projeto\Programacao\
+Value3=C:\Users\pedro\OneDrive\faculdade\10_Semestre\Robotica Industrial\Trabalho-Final-Robotica-Ind\projeto\Programacao\
 [EEPROMinfo]
 isused=0

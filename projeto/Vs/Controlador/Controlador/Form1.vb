@@ -90,9 +90,9 @@
 
     Private Sub btnWH_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnWH.Click
         If Serial.IsOpen() = True Then
-            Serial.Write("1002/")
+            Serial.Write("1002\")
         End If
-        txtBoxEnviado.Text = "1002/"
+        txtBoxEnviado.Text = "1002\"
     End Sub
 
     Private Sub btnCalcular_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCalcular.Click

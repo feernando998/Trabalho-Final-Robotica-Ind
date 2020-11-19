@@ -97,7 +97,9 @@ executa:
               pulso(1, dirAntHor)
            end if
         end if
-        if testbit(porta,0)=0 then borda=false end if
+        if testbit(porta,0)=0 then
+           borda=false
+        end if
 
         'Controle de pulso do Motor 2
         if testbit(porta,1)=1 then
@@ -106,7 +108,9 @@ executa:
               pulso(2, dirAntHor)
            end if
         end if
-        if testbit(porta,1)=0 then borda2=false end if
+        if testbit(porta,1)=0 then
+           borda2=false
+        end if
         
         'mudança de direção.
         if testbit(porta,2)=1 then
@@ -127,7 +131,9 @@ executa:
               end if
            end if
         end if
-        if testbit(porta,3)=0 then borda4=false end if
+        if testbit(porta,3)=0 then
+           borda4=false
+        end if
         
        'reset
        'if testbit(porta,3) = 1 then

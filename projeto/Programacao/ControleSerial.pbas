@@ -15,7 +15,7 @@ sub procedure ciclo(dim cl as integer, dim valPorta as integer)
 
     dim x as integer
 
-    'Envia comando de troca de passo entre 7.5 e 3.75 e vice-versa
+    'troca de passo entre 7.5 e 3.75 e vice-versa
     if passo=true then
        PORTC.3=1
        delay_ms(10)
@@ -32,6 +32,7 @@ sub procedure ciclo(dim cl as integer, dim valPorta as integer)
         clearbit(PORTC, valPorta)
         vdelay_ms(tmpOff)
     next x
+    
     sentAntHor = false
     PORTC.2 = 0
 
@@ -47,16 +48,15 @@ ANSELH=%00000000
 
 PORTC=0
 
-tmpOn=25       ' Colocar 25 para usar no simulador.
+tmpOn=25
 tmpOff=25
 
-sentAntHor=false   ' Inicia em sentido horário
-passo=false     ' Inicia em passos de 3.75
+sentAntHor=false 'Inicia em sentido horário
+passo=false      'Inicia em passos de 3.75
 
 Usart_Init(9600)
 
 executa:
-
         if Usart_Data_Ready() then
            Usart_Read_Text(recMotor,"\")
            Usart_Read_Text(recDirec,"/")
@@ -81,9 +81,9 @@ executa:
               ciclo(ciclos, 1)
            end if
            
-'           if valor=1002 then  'Determina a mudança de passo.
-'              passo=true
-'           end if
+           if valor=1002 then  'Determina a mudança W/H.
+              passo=true
+           end if
 
         end if
         
