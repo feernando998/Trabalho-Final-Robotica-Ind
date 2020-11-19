@@ -5,7 +5,7 @@ dim borda     as boolean  'Detecção de borda para o sinal de pulso para o motor 
 dim borda2    as boolean  'Detecção de borda para o sinal de pulso para o motor 2.
 dim borda3    as boolean  'Detecção de borda para o sinal de direção.
 dim borda4    as boolean  'Detecção de borda para o sinal de pulsos/revolução.
-dim dirAntHor  as boolean  'Define o sentido de contagem das bobinas.
+dim dirAntHor  as boolean 'Define o sentido de contagem das bobinas.
 dim revolucao as boolean  'Define como será o formato de onda:
                           'True --> 400 pulsos por revolução 0,9°.
                           'False -> 200 pulsos por revolução 1,8°.
@@ -86,14 +86,11 @@ borda2=false
 borda3=false
 borda4=false
 dirAntHor=false
-revolucao=true 'Quando true 400 pulsos por revolução
-               'Quando false 200 pulsos por revolução.
+revolucao=true 'true 400 pulsos por revolução
+               'false 200 pulsos por revolução.
 
 executa:
-
-        '****************************************
         ' Controle de pulso do Motor 1
-        '****************************************
         if testbit(porta,0)=1 then
            if borda=false then
               borda=true
@@ -101,10 +98,8 @@ executa:
            end if
         end if
         if testbit(porta,0)=0 then borda=false end if
-        
-        '****************************************
-        ' Controle de pulso do Motor 2
-        '****************************************
+
+        'Controle de pulso do Motor 2
         if testbit(porta,1)=1 then
            if borda2=false then
               borda2=true
@@ -113,18 +108,14 @@ executa:
         end if
         if testbit(porta,1)=0 then borda2=false end if
         
-        '****************************************
-        ' Pulso de mudança de direção.
-        '****************************************
+        'mudança de direção.
         if testbit(porta,2)=1 then
            dirAntHor = true
         else
             dirAntHor = false
         end if
 
-        '*****************************************
-        ' Pulso para alternar entre 400 ou 200 ppr
-        '*****************************************
+        'alterna entre 400 ou 200 ppr
         if testbit(porta,3)=1 then
            if borda4=false then
               borda4=true
