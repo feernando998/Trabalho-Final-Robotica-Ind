@@ -18,7 +18,7 @@ sub procedure ciclo(dim cl as integer, dim valPorta as integer)
     'troca de passo entre 7.5 e 3.75 e vice-versa
     if passo=true then
        PORTC.3=1
-       delay_ms(10)
+       delay_ms(15)
        PORTC.3=0
        passo=false
     end if

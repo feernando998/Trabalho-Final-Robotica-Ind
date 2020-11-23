@@ -11,14 +11,19 @@ dim revolucao as boolean  'Define como será o formato de onda:
                           'False -> 200 pulsos por revolução 1,8°.
 
 sub procedure pulso(dim motor as integer, dim inverte as boolean)
+
     if revolucao = true then
        if inverte = false then
            dec(passo)
-           if passo < 1 then passo=8 end if
-        end if
+           if passo < 1 then
+              passo=8
+           end if
+       end if
         if inverte = true then
            inc(passo)
-           if passo > 8 then passo=1 end if
+           if passo > 8 then
+              passo=1
+           end if
         end if
        
        if motor = 1 then
@@ -42,15 +47,18 @@ sub procedure pulso(dim motor as integer, dim inverte as boolean)
           if passo=7 then PORTC=48 end if
           if passo=8 then PORTC=16 end if
        end if
-
     else
         if inverte = false then
            inc(passo)
-           if passo > 4 then passo=1 end if
+           if passo > 4 then
+              passo=1
+           end if
         end if
         if inverte = true then
            dec(passo)
-           if passo < 1 then passo=4 end if
+           if passo < 1 then
+              passo=4
+           end if
         end if
         
         if motor = 1 then
@@ -116,7 +124,7 @@ executa:
         if testbit(porta,2)=1 then
            dirAntHor = true
         else
-            dirAntHor = false
+           dirAntHor = false
         end if
 
         'alterna entre 400 ou 200 ppr
@@ -127,18 +135,15 @@ executa:
                  revolucao = true
               else
                   revolucao=false
-                  if passo > 4 then passo=4 end if
+                  if passo > 4 then
+                     passo=4
+                  end if
               end if
            end if
         end if
         if testbit(porta,3)=0 then
            borda4=false
         end if
-        
-       'reset
-       'if testbit(porta,3) = 1 then
-
-       ' end if
         
         goto executa
 end.
