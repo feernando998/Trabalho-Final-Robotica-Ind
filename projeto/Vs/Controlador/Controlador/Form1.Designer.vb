@@ -124,21 +124,23 @@ Partial Class FrmMP
         '
         'btnPas0_9
         '
+        Me.btnPas0_9.BackColor = System.Drawing.SystemColors.ControlLightLight
         Me.btnPas0_9.Location = New System.Drawing.Point(168, 95)
         Me.btnPas0_9.Name = "btnPas0_9"
         Me.btnPas0_9.Size = New System.Drawing.Size(45, 23)
         Me.btnPas0_9.TabIndex = 7
         Me.btnPas0_9.Text = "0,9"
-        Me.btnPas0_9.UseVisualStyleBackColor = True
+        Me.btnPas0_9.UseVisualStyleBackColor = False
         '
         'btnPas1_8
         '
+        Me.btnPas1_8.BackColor = System.Drawing.SystemColors.ControlLightLight
         Me.btnPas1_8.Location = New System.Drawing.Point(117, 95)
         Me.btnPas1_8.Name = "btnPas1_8"
         Me.btnPas1_8.Size = New System.Drawing.Size(45, 23)
         Me.btnPas1_8.TabIndex = 6
         Me.btnPas1_8.Text = "1,8"
-        Me.btnPas1_8.UseVisualStyleBackColor = True
+        Me.btnPas1_8.UseVisualStyleBackColor = False
         '
         'txtBoxCiclos
         '
