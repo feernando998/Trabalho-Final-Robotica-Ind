@@ -69,29 +69,38 @@
 
         cmbMotor.SelectedIndex = 0
         motor = 1000
-        txtRecebido.Text = txtFila.Lines.Length
         alteraVisibilidade(True, True, True, True, True, True, True, True, False, False, False, False, False, False, False)
     End Sub
 
     Private Sub btnEnviar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEnviar.Click
         RealizaCalculo()
+        Dim texto As String
 
         If (Serial.IsOpen() = True) Then
             If txtFila.Lines.Length = 0 Then
                 If CInt(txtBoxAngulo.Text) < 0 Then
-                    Serial.Write(Str(motor + txtBoxCiclos.Text) + "\inv/")
-                    txtBoxEnviado.Text = motor + (txtBoxCiclos.Text * 1) & "\inv/"
-                Else
-                    Serial.Write(Str(motor + txtBoxCiclos.Text) + "\nor/")
-                    txtBoxEnviado.Text = motor + (txtBoxCiclos.Text * 1) & "\nor/"
-                End If
-                txtFila.Text = txtFila.Text & motor + (txtBoxCiclos.Text * 1) & Environment.NewLine
-            Else
-                Timer1.Enabled = True
-                txtFila.Text = txtFila.Text & motor + (txtBoxCiclos.Text * 1) & Environment.NewLine
-            End If
+                    texto = motor + (txtBoxCiclos.Text * 1) & "\inv/"
 
-            txtRecebido.Text = txtFila.Lines.Length
+                    Serial.Write(texto)
+                    txtBoxEnviado.Text = texto
+                    txtFila.Text = txtFila.Text & texto & Environment.NewLine
+                Else
+                    texto = motor + (txtBoxCiclos.Text * 1) & "\nor/"
+                    Serial.Write(texto)
+                    txtBoxEnviado.Text = texto
+                    txtFila.Text = txtFila.Text & texto & Environment.NewLine
+                End If
+            Else
+                If CInt(txtBoxAngulo.Text) < 0 Then
+                    texto = motor + (txtBoxCiclos.Text * 1) & "\inv/"
+
+                    txtFila.Text = txtFila.Text & texto & Environment.NewLine
+                Else
+                    texto = motor + (txtBoxCiclos.Text * 1) & "\nor/"
+
+                    txtFila.Text = txtFila.Text & texto & Environment.NewLine
+                End If
+            End If
         End If
 
     End Sub
@@ -334,10 +343,36 @@
         End If
     End Sub
 
+    Dim recebe As String
+
     Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
 
         If Serial.BytesToRead > 0 Then
-            txtRecebido.Text = Serial.ReadExisting
+            recebe = Serial.ReadExisting
+            txtRecebido.Text = recebe.Trim
+
+            If txtFila.Lines.Length > 0 Then
+                txtFila.Select(0, recebe.Length + 2)
+                txtFila.SelectedText = ""
+
+                Timer2.Enabled = True
+
+            End If
+            
         End If
+    End Sub
+
+    Private Sub Timer2_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer2.Tick
+
+        If txtFila.Lines.Length > 0 Then
+            txtFila.Select(0, recebe.Length + 1)
+
+            txtBoxEnviado.Text = txtFila.SelectedText & "/"
+            Serial.Write(txtFila.SelectedText & "/")
+        End If
+        recebe = ""
+        txtRecebido.Text = ""
+
+        Timer2.Enabled = False
     End Sub
 End Class

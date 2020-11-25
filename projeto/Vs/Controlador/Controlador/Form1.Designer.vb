@@ -57,18 +57,19 @@ Partial Class FrmMP
         Me.btnWH = New System.Windows.Forms.Button()
         Me.btnEnviar = New System.Windows.Forms.Button()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
-        Me.Serial = New System.IO.Ports.SerialPort(Me.components)
-        Me.GroupBox5 = New System.Windows.Forms.GroupBox()
-        Me.cmbMotor = New System.Windows.Forms.ComboBox()
-        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.txtFila = New System.Windows.Forms.TextBox()
-        Me.Serial2 = New System.IO.Ports.SerialPort(Me.components)
-        Me.Serial3 = New System.IO.Ports.SerialPort(Me.components)
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.txtRecebido = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.txtBoxEnviado = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.txtFila = New System.Windows.Forms.TextBox()
+        Me.Serial = New System.IO.Ports.SerialPort(Me.components)
+        Me.GroupBox5 = New System.Windows.Forms.GroupBox()
+        Me.cmbMotor = New System.Windows.Forms.ComboBox()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.Serial2 = New System.IO.Ports.SerialPort(Me.components)
+        Me.Serial3 = New System.IO.Ports.SerialPort(Me.components)
+        Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
         Me.GroupBox1.SuspendLayout()
         CType(Me.trbAngT1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
@@ -488,55 +489,14 @@ Partial Class FrmMP
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Status:"
         '
-        'Serial
+        'Label1
         '
-        Me.Serial.PortName = "COM4"
-        '
-        'GroupBox5
-        '
-        Me.GroupBox5.BackColor = System.Drawing.Color.White
-        Me.GroupBox5.Controls.Add(Me.cmbMotor)
-        Me.GroupBox5.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox5.Location = New System.Drawing.Point(12, 13)
-        Me.GroupBox5.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Padding = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.GroupBox5.Size = New System.Drawing.Size(219, 63)
-        Me.GroupBox5.TabIndex = 4
-        Me.GroupBox5.TabStop = False
-        Me.GroupBox5.Text = "Motor"
-        '
-        'cmbMotor
-        '
-        Me.cmbMotor.Font = New System.Drawing.Font("Consolas", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbMotor.FormattingEnabled = True
-        Me.cmbMotor.Items.AddRange(New Object() {"Theta 1", "Theta 2", "Theta 3", "Theta 4", "Theta 5", "Theta 6"})
-        Me.cmbMotor.Location = New System.Drawing.Point(56, 20)
-        Me.cmbMotor.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.cmbMotor.Name = "cmbMotor"
-        Me.cmbMotor.Size = New System.Drawing.Size(121, 27)
-        Me.cmbMotor.TabIndex = 0
-        '
-        'Timer1
-        '
-        '
-        'txtFila
-        '
-        Me.txtFila.Cursor = System.Windows.Forms.Cursors.No
-        Me.txtFila.Location = New System.Drawing.Point(67, 69)
-        Me.txtFila.Multiline = True
-        Me.txtFila.Name = "txtFila"
-        Me.txtFila.ReadOnly = True
-        Me.txtFila.Size = New System.Drawing.Size(76, 183)
-        Me.txtFila.TabIndex = 7
-        '
-        'Serial2
-        '
-        Me.Serial2.PortName = "COM3"
-        '
-        'Serial3
-        '
-        Me.Serial3.PortName = "COM2"
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(24, 72)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(43, 13)
+        Me.Label1.TabIndex = 12
+        Me.Label1.Text = "Lista:"
         '
         'txtRecebido
         '
@@ -578,14 +538,61 @@ Partial Class FrmMP
         Me.Label4.TabIndex = 8
         Me.Label4.Text = "Enviado:"
         '
-        'Label1
+        'txtFila
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(24, 72)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(43, 13)
-        Me.Label1.TabIndex = 12
-        Me.Label1.Text = "Lista:"
+        Me.txtFila.Cursor = System.Windows.Forms.Cursors.No
+        Me.txtFila.Enabled = False
+        Me.txtFila.Location = New System.Drawing.Point(67, 69)
+        Me.txtFila.Multiline = True
+        Me.txtFila.Name = "txtFila"
+        Me.txtFila.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.txtFila.Size = New System.Drawing.Size(89, 183)
+        Me.txtFila.TabIndex = 7
+        '
+        'Serial
+        '
+        Me.Serial.PortName = "COM4"
+        '
+        'GroupBox5
+        '
+        Me.GroupBox5.BackColor = System.Drawing.Color.White
+        Me.GroupBox5.Controls.Add(Me.cmbMotor)
+        Me.GroupBox5.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox5.Location = New System.Drawing.Point(12, 13)
+        Me.GroupBox5.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.GroupBox5.Name = "GroupBox5"
+        Me.GroupBox5.Padding = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.GroupBox5.Size = New System.Drawing.Size(219, 63)
+        Me.GroupBox5.TabIndex = 4
+        Me.GroupBox5.TabStop = False
+        Me.GroupBox5.Text = "Motor"
+        '
+        'cmbMotor
+        '
+        Me.cmbMotor.Font = New System.Drawing.Font("Consolas", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbMotor.FormattingEnabled = True
+        Me.cmbMotor.Items.AddRange(New Object() {"Theta 1", "Theta 2", "Theta 3", "Theta 4", "Theta 5", "Theta 6"})
+        Me.cmbMotor.Location = New System.Drawing.Point(56, 20)
+        Me.cmbMotor.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.cmbMotor.Name = "cmbMotor"
+        Me.cmbMotor.Size = New System.Drawing.Size(121, 27)
+        Me.cmbMotor.TabIndex = 0
+        '
+        'Timer1
+        '
+        Me.Timer1.Enabled = True
+        '
+        'Serial2
+        '
+        Me.Serial2.PortName = "COM3"
+        '
+        'Serial3
+        '
+        Me.Serial3.PortName = "COM2"
+        '
+        'Timer2
+        '
+        Me.Timer2.Interval = 500
         '
         'FrmMP
         '
@@ -663,5 +670,6 @@ Partial Class FrmMP
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents txtBoxEnviado As System.Windows.Forms.TextBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents Timer2 As System.Windows.Forms.Timer
 
 End Class

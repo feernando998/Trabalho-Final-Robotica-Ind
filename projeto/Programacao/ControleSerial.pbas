@@ -35,6 +35,10 @@ sub procedure ciclo(dim cl as integer, dim valPorta as integer)
     
     sentAntHor = false
     PORTC.2 = 0
+    delay_ms(10)
+    
+    Usart_Write_Text(recMotor)
+    Usart_Write_Text("end/")
 
 end sub
 

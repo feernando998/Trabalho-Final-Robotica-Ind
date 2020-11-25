@@ -4,6 +4,8 @@ main
 		Div_16x16_S_L
 	USART_Init
 	ciclo
+		Usart_Write_Text
+			USART_Write
 		VDelay_ms
 			Mul_32x32_U
 	strcmp
