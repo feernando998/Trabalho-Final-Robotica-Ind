@@ -57,13 +57,18 @@ Partial Class FrmMP
         Me.btnWH = New System.Windows.Forms.Button()
         Me.btnEnviar = New System.Windows.Forms.Button()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.Serial = New System.IO.Ports.SerialPort(Me.components)
+        Me.GroupBox5 = New System.Windows.Forms.GroupBox()
+        Me.cmbMotor = New System.Windows.Forms.ComboBox()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.txtFila = New System.Windows.Forms.TextBox()
+        Me.Serial2 = New System.IO.Ports.SerialPort(Me.components)
+        Me.Serial3 = New System.IO.Ports.SerialPort(Me.components)
         Me.txtRecebido = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.txtBoxEnviado = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.Serial = New System.IO.Ports.SerialPort(Me.components)
-        Me.GroupBox5 = New System.Windows.Forms.GroupBox()
-        Me.cmbMotor = New System.Windows.Forms.ComboBox()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         CType(Me.trbAngT1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
@@ -225,7 +230,7 @@ Partial Class FrmMP
         Me.GroupBox2.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Padding = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.GroupBox2.Size = New System.Drawing.Size(219, 183)
+        Me.GroupBox2.Size = New System.Drawing.Size(219, 271)
         Me.GroupBox2.TabIndex = 1
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Ângulos predefinidos:"
@@ -245,7 +250,7 @@ Partial Class FrmMP
         'btnAng400
         '
         Me.btnAng400.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.btnAng400.Location = New System.Drawing.Point(115, 130)
+        Me.btnAng400.Location = New System.Drawing.Point(115, 144)
         Me.btnAng400.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.btnAng400.Name = "btnAng400"
         Me.btnAng400.Size = New System.Drawing.Size(46, 24)
@@ -257,7 +262,7 @@ Partial Class FrmMP
         'btnAng360
         '
         Me.btnAng360.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.btnAng360.Location = New System.Drawing.Point(66, 130)
+        Me.btnAng360.Location = New System.Drawing.Point(66, 144)
         Me.btnAng360.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.btnAng360.Name = "btnAng360"
         Me.btnAng360.Size = New System.Drawing.Size(46, 24)
@@ -269,7 +274,7 @@ Partial Class FrmMP
         'btnAng330
         '
         Me.btnAng330.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.btnAng330.Location = New System.Drawing.Point(12, 130)
+        Me.btnAng330.Location = New System.Drawing.Point(12, 144)
         Me.btnAng330.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.btnAng330.Name = "btnAng330"
         Me.btnAng330.Size = New System.Drawing.Size(46, 24)
@@ -281,7 +286,7 @@ Partial Class FrmMP
         'btnAng300
         '
         Me.btnAng300.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.btnAng300.Location = New System.Drawing.Point(167, 102)
+        Me.btnAng300.Location = New System.Drawing.Point(167, 116)
         Me.btnAng300.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.btnAng300.Name = "btnAng300"
         Me.btnAng300.Size = New System.Drawing.Size(46, 24)
@@ -293,7 +298,7 @@ Partial Class FrmMP
         'btnAng270
         '
         Me.btnAng270.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.btnAng270.Location = New System.Drawing.Point(115, 102)
+        Me.btnAng270.Location = New System.Drawing.Point(115, 116)
         Me.btnAng270.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.btnAng270.Name = "btnAng270"
         Me.btnAng270.Size = New System.Drawing.Size(46, 24)
@@ -305,7 +310,7 @@ Partial Class FrmMP
         'btnAng230
         '
         Me.btnAng230.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.btnAng230.Location = New System.Drawing.Point(66, 102)
+        Me.btnAng230.Location = New System.Drawing.Point(66, 116)
         Me.btnAng230.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.btnAng230.Name = "btnAng230"
         Me.btnAng230.Size = New System.Drawing.Size(46, 24)
@@ -317,7 +322,7 @@ Partial Class FrmMP
         'btnAng200
         '
         Me.btnAng200.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.btnAng200.Location = New System.Drawing.Point(12, 102)
+        Me.btnAng200.Location = New System.Drawing.Point(12, 116)
         Me.btnAng200.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.btnAng200.Name = "btnAng200"
         Me.btnAng200.Size = New System.Drawing.Size(46, 24)
@@ -329,7 +334,7 @@ Partial Class FrmMP
         'btnAng180
         '
         Me.btnAng180.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.btnAng180.Location = New System.Drawing.Point(168, 74)
+        Me.btnAng180.Location = New System.Drawing.Point(168, 88)
         Me.btnAng180.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.btnAng180.Name = "btnAng180"
         Me.btnAng180.Size = New System.Drawing.Size(46, 24)
@@ -340,7 +345,7 @@ Partial Class FrmMP
         'btnAng90
         '
         Me.btnAng90.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.btnAng90.Location = New System.Drawing.Point(115, 74)
+        Me.btnAng90.Location = New System.Drawing.Point(115, 88)
         Me.btnAng90.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.btnAng90.Name = "btnAng90"
         Me.btnAng90.Size = New System.Drawing.Size(46, 24)
@@ -351,7 +356,7 @@ Partial Class FrmMP
         'btnAng60
         '
         Me.btnAng60.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.btnAng60.Location = New System.Drawing.Point(65, 74)
+        Me.btnAng60.Location = New System.Drawing.Point(65, 88)
         Me.btnAng60.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.btnAng60.Name = "btnAng60"
         Me.btnAng60.Size = New System.Drawing.Size(46, 24)
@@ -362,7 +367,7 @@ Partial Class FrmMP
         'btnAng45
         '
         Me.btnAng45.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.btnAng45.Location = New System.Drawing.Point(12, 74)
+        Me.btnAng45.Location = New System.Drawing.Point(12, 88)
         Me.btnAng45.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.btnAng45.Name = "btnAng45"
         Me.btnAng45.Size = New System.Drawing.Size(46, 24)
@@ -373,7 +378,7 @@ Partial Class FrmMP
         'btnAng30
         '
         Me.btnAng30.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.btnAng30.Location = New System.Drawing.Point(167, 44)
+        Me.btnAng30.Location = New System.Drawing.Point(167, 58)
         Me.btnAng30.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.btnAng30.Name = "btnAng30"
         Me.btnAng30.Size = New System.Drawing.Size(46, 24)
@@ -384,7 +389,7 @@ Partial Class FrmMP
         'btnAng15
         '
         Me.btnAng15.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.btnAng15.Location = New System.Drawing.Point(115, 44)
+        Me.btnAng15.Location = New System.Drawing.Point(115, 58)
         Me.btnAng15.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.btnAng15.Name = "btnAng15"
         Me.btnAng15.Size = New System.Drawing.Size(46, 24)
@@ -395,7 +400,7 @@ Partial Class FrmMP
         'btnAng18
         '
         Me.btnAng18.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.btnAng18.Location = New System.Drawing.Point(65, 44)
+        Me.btnAng18.Location = New System.Drawing.Point(65, 58)
         Me.btnAng18.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.btnAng18.Name = "btnAng18"
         Me.btnAng18.Size = New System.Drawing.Size(46, 24)
@@ -406,7 +411,7 @@ Partial Class FrmMP
         'btnAng09
         '
         Me.btnAng09.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.btnAng09.Location = New System.Drawing.Point(12, 44)
+        Me.btnAng09.Location = New System.Drawing.Point(12, 58)
         Me.btnAng09.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.btnAng09.Name = "btnAng09"
         Me.btnAng09.Size = New System.Drawing.Size(46, 24)
@@ -420,11 +425,11 @@ Partial Class FrmMP
         Me.GroupBox3.Controls.Add(Me.btnWH)
         Me.GroupBox3.Controls.Add(Me.btnEnviar)
         Me.GroupBox3.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox3.Location = New System.Drawing.Point(12, 267)
+        Me.GroupBox3.Location = New System.Drawing.Point(237, 267)
         Me.GroupBox3.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Padding = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.GroupBox3.Size = New System.Drawing.Size(219, 84)
+        Me.GroupBox3.Size = New System.Drawing.Size(308, 84)
         Me.GroupBox3.TabIndex = 2
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Comandos:"
@@ -436,7 +441,7 @@ Partial Class FrmMP
         Me.btnCalcular.Location = New System.Drawing.Point(7, 21)
         Me.btnCalcular.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.btnCalcular.Name = "btnCalcular"
-        Me.btnCalcular.Size = New System.Drawing.Size(102, 24)
+        Me.btnCalcular.Size = New System.Drawing.Size(148, 24)
         Me.btnCalcular.TabIndex = 8
         Me.btnCalcular.Text = "Calcular"
         Me.btnCalcular.UseVisualStyleBackColor = False
@@ -445,10 +450,10 @@ Partial Class FrmMP
         '
         Me.btnWH.BackColor = System.Drawing.SystemColors.ControlLightLight
         Me.btnWH.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnWH.Location = New System.Drawing.Point(115, 21)
+        Me.btnWH.Location = New System.Drawing.Point(161, 21)
         Me.btnWH.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.btnWH.Name = "btnWH"
-        Me.btnWH.Size = New System.Drawing.Size(96, 24)
+        Me.btnWH.Size = New System.Drawing.Size(141, 24)
         Me.btnWH.TabIndex = 7
         Me.btnWH.Text = "Wave / Half"
         Me.btnWH.UseVisualStyleBackColor = False
@@ -460,66 +465,28 @@ Partial Class FrmMP
         Me.btnEnviar.Location = New System.Drawing.Point(7, 49)
         Me.btnEnviar.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.btnEnviar.Name = "btnEnviar"
-        Me.btnEnviar.Size = New System.Drawing.Size(204, 24)
+        Me.btnEnviar.Size = New System.Drawing.Size(295, 24)
         Me.btnEnviar.TabIndex = 5
         Me.btnEnviar.Text = "Enviar"
         Me.btnEnviar.UseVisualStyleBackColor = False
         '
         'GroupBox4
         '
+        Me.GroupBox4.Controls.Add(Me.Label1)
         Me.GroupBox4.Controls.Add(Me.txtRecebido)
         Me.GroupBox4.Controls.Add(Me.Label5)
         Me.GroupBox4.Controls.Add(Me.txtBoxEnviado)
         Me.GroupBox4.Controls.Add(Me.Label4)
+        Me.GroupBox4.Controls.Add(Me.txtFila)
         Me.GroupBox4.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox4.Location = New System.Drawing.Point(237, 267)
+        Me.GroupBox4.Location = New System.Drawing.Point(551, 80)
         Me.GroupBox4.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.Padding = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.GroupBox4.Size = New System.Drawing.Size(188, 84)
+        Me.GroupBox4.Size = New System.Drawing.Size(162, 272)
         Me.GroupBox4.TabIndex = 3
         Me.GroupBox4.TabStop = False
-        Me.GroupBox4.Text = "Status (serial):"
-        '
-        'txtRecebido
-        '
-        Me.txtRecebido.Cursor = System.Windows.Forms.Cursors.No
-        Me.txtRecebido.Location = New System.Drawing.Point(86, 47)
-        Me.txtRecebido.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.txtRecebido.Name = "txtRecebido"
-        Me.txtRecebido.ReadOnly = True
-        Me.txtRecebido.Size = New System.Drawing.Size(76, 20)
-        Me.txtRecebido.TabIndex = 6
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(26, 50)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(61, 13)
-        Me.Label5.TabIndex = 5
-        Me.Label5.Text = "Recebido:"
-        '
-        'txtBoxEnviado
-        '
-        Me.txtBoxEnviado.Cursor = System.Windows.Forms.Cursors.No
-        Me.txtBoxEnviado.Location = New System.Drawing.Point(86, 20)
-        Me.txtBoxEnviado.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.txtBoxEnviado.Name = "txtBoxEnviado"
-        Me.txtBoxEnviado.ReadOnly = True
-        Me.txtBoxEnviado.Size = New System.Drawing.Size(76, 20)
-        Me.txtBoxEnviado.TabIndex = 4
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(32, 21)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(55, 13)
-        Me.Label4.TabIndex = 0
-        Me.Label4.Text = "Enviado:"
+        Me.GroupBox4.Text = "Status:"
         '
         'Serial
         '
@@ -550,12 +517,82 @@ Partial Class FrmMP
         Me.cmbMotor.Size = New System.Drawing.Size(121, 27)
         Me.cmbMotor.TabIndex = 0
         '
+        'Timer1
+        '
+        '
+        'txtFila
+        '
+        Me.txtFila.Cursor = System.Windows.Forms.Cursors.No
+        Me.txtFila.Location = New System.Drawing.Point(67, 69)
+        Me.txtFila.Multiline = True
+        Me.txtFila.Name = "txtFila"
+        Me.txtFila.ReadOnly = True
+        Me.txtFila.Size = New System.Drawing.Size(76, 183)
+        Me.txtFila.TabIndex = 7
+        '
+        'Serial2
+        '
+        Me.Serial2.PortName = "COM3"
+        '
+        'Serial3
+        '
+        Me.Serial3.PortName = "COM2"
+        '
+        'txtRecebido
+        '
+        Me.txtRecebido.Cursor = System.Windows.Forms.Cursors.No
+        Me.txtRecebido.Location = New System.Drawing.Point(67, 44)
+        Me.txtRecebido.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.txtRecebido.Name = "txtRecebido"
+        Me.txtRecebido.ReadOnly = True
+        Me.txtRecebido.Size = New System.Drawing.Size(76, 20)
+        Me.txtRecebido.TabIndex = 11
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(6, 47)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(61, 13)
+        Me.Label5.TabIndex = 10
+        Me.Label5.Text = "Recebido:"
+        '
+        'txtBoxEnviado
+        '
+        Me.txtBoxEnviado.Cursor = System.Windows.Forms.Cursors.No
+        Me.txtBoxEnviado.Location = New System.Drawing.Point(67, 17)
+        Me.txtBoxEnviado.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.txtBoxEnviado.Name = "txtBoxEnviado"
+        Me.txtBoxEnviado.ReadOnly = True
+        Me.txtBoxEnviado.Size = New System.Drawing.Size(76, 20)
+        Me.txtBoxEnviado.TabIndex = 9
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(12, 20)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(55, 13)
+        Me.Label4.TabIndex = 8
+        Me.Label4.Text = "Enviado:"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(24, 72)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(43, 13)
+        Me.Label1.TabIndex = 12
+        Me.Label1.Text = "Lista:"
+        '
         'FrmMP
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(563, 362)
+        Me.ClientSize = New System.Drawing.Size(748, 367)
         Me.Controls.Add(Me.GroupBox5)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox3)
@@ -601,13 +638,9 @@ Partial Class FrmMP
     Friend WithEvents btnWH As System.Windows.Forms.Button
     Friend WithEvents btnEnviar As System.Windows.Forms.Button
     Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox
-    Friend WithEvents txtBoxEnviado As System.Windows.Forms.TextBox
-    Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents Serial As System.IO.Ports.SerialPort
     Friend WithEvents GroupBox5 As System.Windows.Forms.GroupBox
     Friend WithEvents cmbMotor As System.Windows.Forms.ComboBox
-    Friend WithEvents txtRecebido As System.Windows.Forms.TextBox
-    Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents btnAng400 As System.Windows.Forms.Button
     Friend WithEvents btnAng360 As System.Windows.Forms.Button
     Friend WithEvents btnAng330 As System.Windows.Forms.Button
@@ -621,5 +654,14 @@ Partial Class FrmMP
     Friend WithEvents lblAngMax As System.Windows.Forms.Label
     Friend WithEvents lblAngMin As System.Windows.Forms.Label
     Friend WithEvents trbAngT1 As System.Windows.Forms.TrackBar
+    Friend WithEvents Timer1 As System.Windows.Forms.Timer
+    Friend WithEvents txtFila As System.Windows.Forms.TextBox
+    Friend WithEvents Serial2 As System.IO.Ports.SerialPort
+    Friend WithEvents Serial3 As System.IO.Ports.SerialPort
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents txtRecebido As System.Windows.Forms.TextBox
+    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents txtBoxEnviado As System.Windows.Forms.TextBox
+    Friend WithEvents Label4 As System.Windows.Forms.Label
 
 End Class

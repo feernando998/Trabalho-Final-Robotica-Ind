@@ -60,9 +60,16 @@
         If Serial.IsOpen = False Then
             Serial.Open()
         End If
+        If Serial2.IsOpen = False Then
+            Serial2.Open()
+        End If
+        If Serial3.IsOpen = False Then
+            Serial3.Open()
+        End If
 
         cmbMotor.SelectedIndex = 0
         motor = 1000
+        txtRecebido.Text = txtFila.Lines.Length
         alteraVisibilidade(True, True, True, True, True, True, True, True, False, False, False, False, False, False, False)
     End Sub
 
@@ -70,13 +77,21 @@
         RealizaCalculo()
 
         If (Serial.IsOpen() = True) Then
-            If CInt(txtBoxAngulo.Text) < 0 Then
-                Serial.Write(Str(motor + txtBoxCiclos.Text) + "\inv/")
-                txtBoxEnviado.Text = motor + (txtBoxCiclos.Text * 1) & "\inv/"
+            If txtFila.Lines.Length = 0 Then
+                If CInt(txtBoxAngulo.Text) < 0 Then
+                    Serial.Write(Str(motor + txtBoxCiclos.Text) + "\inv/")
+                    txtBoxEnviado.Text = motor + (txtBoxCiclos.Text * 1) & "\inv/"
+                Else
+                    Serial.Write(Str(motor + txtBoxCiclos.Text) + "\nor/")
+                    txtBoxEnviado.Text = motor + (txtBoxCiclos.Text * 1) & "\nor/"
+                End If
+                txtFila.Text = txtFila.Text & motor + (txtBoxCiclos.Text * 1) & Environment.NewLine
             Else
-                Serial.Write(Str(motor + txtBoxCiclos.Text) + "\nor/")
-                txtBoxEnviado.Text = motor + (txtBoxCiclos.Text * 1) & "\nor/"
+                Timer1.Enabled = True
+                txtFila.Text = txtFila.Text & motor + (txtBoxCiclos.Text * 1) & Environment.NewLine
             End If
+
+            txtRecebido.Text = txtFila.Lines.Length
         End If
 
     End Sub
@@ -316,6 +331,13 @@
                 Return
             End If
             trbAngT1.Value = txtBoxAngulo.Text
+        End If
+    End Sub
+
+    Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
+
+        If Serial.BytesToRead > 0 Then
+            txtRecebido.Text = Serial.ReadExisting
         End If
     End Sub
 End Class
