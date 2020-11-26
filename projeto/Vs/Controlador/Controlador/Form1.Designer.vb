@@ -57,6 +57,7 @@ Partial Class FrmMP
         Me.btnWH = New System.Windows.Forms.Button()
         Me.btnEnviar = New System.Windows.Forms.Button()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.txtTamanho = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtRecebido = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
@@ -473,6 +474,7 @@ Partial Class FrmMP
         '
         'GroupBox4
         '
+        Me.GroupBox4.Controls.Add(Me.txtTamanho)
         Me.GroupBox4.Controls.Add(Me.Label1)
         Me.GroupBox4.Controls.Add(Me.txtRecebido)
         Me.GroupBox4.Controls.Add(Me.Label5)
@@ -488,6 +490,14 @@ Partial Class FrmMP
         Me.GroupBox4.TabIndex = 3
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Status:"
+        '
+        'txtTamanho
+        '
+        Me.txtTamanho.Enabled = False
+        Me.txtTamanho.Location = New System.Drawing.Point(25, 232)
+        Me.txtTamanho.Name = "txtTamanho"
+        Me.txtTamanho.Size = New System.Drawing.Size(36, 20)
+        Me.txtTamanho.TabIndex = 11
         '
         'Label1
         '
@@ -592,7 +602,7 @@ Partial Class FrmMP
         '
         'Timer2
         '
-        Me.Timer2.Interval = 500
+        Me.Timer2.Interval = 2000
         '
         'FrmMP
         '
@@ -671,5 +681,6 @@ Partial Class FrmMP
     Friend WithEvents txtBoxEnviado As System.Windows.Forms.TextBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents Timer2 As System.Windows.Forms.Timer
+    Friend WithEvents txtTamanho As System.Windows.Forms.TextBox
 
 End Class

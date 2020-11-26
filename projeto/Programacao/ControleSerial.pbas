@@ -37,7 +37,6 @@ sub procedure ciclo(dim cl as integer, dim valPorta as integer)
     PORTC.2 = 0
     delay_ms(10)
     
-    Usart_Write_Text(recMotor)
     Usart_Write_Text("end/")
 
 end sub
@@ -61,7 +60,7 @@ passo=false      'Inicia em passos de 3.75
 Usart_Init(9600)
 
 executa:
-        if Usart_Data_Ready() then
+        if Usart_Data_Ready() > 0 then
            Usart_Read_Text(recMotor,"\")
            Usart_Read_Text(recDirec,"/")
            valor = StrToInt(recMotor)

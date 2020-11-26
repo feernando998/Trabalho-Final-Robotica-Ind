@@ -69,6 +69,7 @@
 
         cmbMotor.SelectedIndex = 0
         motor = 1000
+        txtTamanho.Text = txtFila.Text.Length
         alteraVisibilidade(True, True, True, True, True, True, True, True, False, False, False, False, False, False, False)
     End Sub
 
@@ -77,7 +78,7 @@
         Dim texto As String
 
         If (Serial.IsOpen() = True) Then
-            If txtFila.Lines.Length = 0 Then
+            If txtFila.Text.Length <= 1 Then
                 If CInt(txtBoxAngulo.Text) < 0 Then
                     texto = motor + (txtBoxCiclos.Text * 1) & "\inv/"
 
@@ -101,6 +102,7 @@
                     txtFila.Text = txtFila.Text & texto & Environment.NewLine
                 End If
             End If
+            txtTamanho.Text = txtFila.Lines.Length
         End If
 
     End Sub
@@ -343,34 +345,31 @@
         End If
     End Sub
 
-    Dim recebe As String
-
     Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
 
-        If Serial.BytesToRead > 0 Then
-            recebe = Serial.ReadExisting
-            txtRecebido.Text = recebe.Trim
+        txtTamanho.Text = txtFila.Text.Length
 
-            If txtFila.Lines.Length > 0 Then
-                txtFila.Select(0, recebe.Length + 2)
+        If Serial.BytesToRead > 0 Then
+            txtRecebido.Text = Serial.ReadExisting
+
+            If txtFila.Text.Length > 1 Then
+                txtFila.Select(0, txtFila.Text.IndexOf("/") + 2)
                 txtFila.SelectedText = ""
 
                 Timer2.Enabled = True
-
             End If
-            
+
         End If
     End Sub
 
     Private Sub Timer2_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer2.Tick
 
-        If txtFila.Lines.Length > 0 Then
-            txtFila.Select(0, recebe.Length + 1)
+        If txtFila.Text.Length > 1 Then
+            txtFila.Select(0, txtFila.Text.IndexOf("/") + 1)
 
-            txtBoxEnviado.Text = txtFila.SelectedText & "/"
-            Serial.Write(txtFila.SelectedText & "/")
+            Serial.Write(txtFila.SelectedText.Trim)
+            txtBoxEnviado.Text = txtFila.SelectedText.Trim
         End If
-        recebe = ""
         txtRecebido.Text = ""
 
         Timer2.Enabled = False
