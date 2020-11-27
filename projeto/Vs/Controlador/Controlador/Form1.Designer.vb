@@ -594,11 +594,11 @@ Partial Class FrmMP
         '
         'Serial2
         '
-        Me.Serial2.PortName = "COM3"
+        Me.Serial2.PortName = "COM2"
         '
         'Serial3
         '
-        Me.Serial3.PortName = "COM2"
+        Me.Serial3.PortName = "COM3"
         '
         'Timer2
         '

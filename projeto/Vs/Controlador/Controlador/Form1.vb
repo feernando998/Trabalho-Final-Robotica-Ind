@@ -77,32 +77,94 @@
         RealizaCalculo()
         Dim texto As String
 
-        If (Serial.IsOpen() = True) Then
-            If txtFila.Text.Length <= 1 Then
-                If CInt(txtBoxAngulo.Text) < 0 Then
-                    texto = motor + (txtBoxCiclos.Text * 1) & "\inv/"
+        If ((cmbMotor.SelectedIndex = 0) Or (cmbMotor.SelectedIndex = 1)) Then
+            If (Serial.IsOpen() = True) Then
+                If txtFila.Text.Length <= 1 Then
+                    If CInt(txtBoxAngulo.Text) < 0 Then
+                        texto = motor + (txtBoxCiclos.Text * 1) & "\inv/"
 
-                    Serial.Write(texto)
-                    txtBoxEnviado.Text = texto
-                    txtFila.Text = txtFila.Text & texto & Environment.NewLine
+                        Serial.Write(texto)
+                        txtBoxEnviado.Text = texto
+                        txtFila.Text = txtFila.Text & texto & Environment.NewLine
+                    Else
+                        texto = motor + (txtBoxCiclos.Text * 1) & "\nor/"
+                        Serial.Write(texto)
+                        txtBoxEnviado.Text = texto
+                        txtFila.Text = txtFila.Text & texto & Environment.NewLine
+                    End If
                 Else
-                    texto = motor + (txtBoxCiclos.Text * 1) & "\nor/"
-                    Serial.Write(texto)
-                    txtBoxEnviado.Text = texto
-                    txtFila.Text = txtFila.Text & texto & Environment.NewLine
-                End If
-            Else
-                If CInt(txtBoxAngulo.Text) < 0 Then
-                    texto = motor + (txtBoxCiclos.Text * 1) & "\inv/"
+                    If CInt(txtBoxAngulo.Text) < 0 Then
+                        texto = motor + (txtBoxCiclos.Text * 1) & "\inv/"
 
-                    txtFila.Text = txtFila.Text & texto & Environment.NewLine
-                Else
-                    texto = motor + (txtBoxCiclos.Text * 1) & "\nor/"
+                        txtFila.Text = txtFila.Text & texto & Environment.NewLine
+                    Else
+                        texto = motor + (txtBoxCiclos.Text * 1) & "\nor/"
 
-                    txtFila.Text = txtFila.Text & texto & Environment.NewLine
+                        txtFila.Text = txtFila.Text & texto & Environment.NewLine
+                    End If
                 End If
+                txtTamanho.Text = txtFila.Lines.Length
             End If
-            txtTamanho.Text = txtFila.Lines.Length
+        End If
+
+        If ((cmbMotor.SelectedIndex = 2) Or (cmbMotor.SelectedIndex = 3)) Then
+            If (Serial2.IsOpen() = True) Then
+                If txtFila.Text.Length <= 1 Then
+                    If CInt(txtBoxAngulo.Text) < 0 Then
+                        texto = motor + (txtBoxCiclos.Text * 1) & "\inv/"
+
+                        Serial2.Write(texto)
+                        txtBoxEnviado.Text = texto
+                        txtFila.Text = txtFila.Text & texto & Environment.NewLine
+                    Else
+                        texto = motor + (txtBoxCiclos.Text * 1) & "\nor/"
+                        Serial2.Write(texto)
+                        txtBoxEnviado.Text = texto
+                        txtFila.Text = txtFila.Text & texto & Environment.NewLine
+                    End If
+                Else
+                    If CInt(txtBoxAngulo.Text) < 0 Then
+                        texto = motor + (txtBoxCiclos.Text * 1) & "\inv/"
+
+                        txtFila.Text = txtFila.Text & texto & Environment.NewLine
+                    Else
+                        texto = motor + (txtBoxCiclos.Text * 1) & "\nor/"
+
+                        txtFila.Text = txtFila.Text & texto & Environment.NewLine
+                    End If
+                End If
+                txtTamanho.Text = txtFila.Lines.Length
+            End If
+        End If
+
+        If ((cmbMotor.SelectedIndex = 4) Or (cmbMotor.SelectedIndex = 5)) Then
+            If (Serial3.IsOpen() = True) Then
+                If txtFila.Text.Length <= 1 Then
+                    If CInt(txtBoxAngulo.Text) < 0 Then
+                        texto = motor + (txtBoxCiclos.Text * 1) & "\inv/"
+
+                        Serial3.Write(texto)
+                        txtBoxEnviado.Text = texto
+                        txtFila.Text = txtFila.Text & texto & Environment.NewLine
+                    Else
+                        texto = motor + (txtBoxCiclos.Text * 1) & "\nor/"
+                        Serial3.Write(texto)
+                        txtBoxEnviado.Text = texto
+                        txtFila.Text = txtFila.Text & texto & Environment.NewLine
+                    End If
+                Else
+                    If CInt(txtBoxAngulo.Text) < 0 Then
+                        texto = motor + (txtBoxCiclos.Text * 1) & "\inv/"
+
+                        txtFila.Text = txtFila.Text & texto & Environment.NewLine
+                    Else
+                        texto = motor + (txtBoxCiclos.Text * 1) & "\nor/"
+
+                        txtFila.Text = txtFila.Text & texto & Environment.NewLine
+                    End If
+                End If
+                txtTamanho.Text = txtFila.Lines.Length
+            End If
         End If
 
     End Sub
