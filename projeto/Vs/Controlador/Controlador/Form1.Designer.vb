@@ -71,6 +71,8 @@ Partial Class FrmMP
         Me.Serial2 = New System.IO.Ports.SerialPort(Me.components)
         Me.Serial3 = New System.IO.Ports.SerialPort(Me.components)
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
+        Me.btnResetar = New System.Windows.Forms.Button()
+        Me.TimerReset = New System.Windows.Forms.Timer(Me.components)
         Me.GroupBox1.SuspendLayout()
         CType(Me.trbAngT1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
@@ -423,6 +425,7 @@ Partial Class FrmMP
         '
         'GroupBox3
         '
+        Me.GroupBox3.Controls.Add(Me.btnResetar)
         Me.GroupBox3.Controls.Add(Me.btnCalcular)
         Me.GroupBox3.Controls.Add(Me.btnWH)
         Me.GroupBox3.Controls.Add(Me.btnEnviar)
@@ -467,7 +470,7 @@ Partial Class FrmMP
         Me.btnEnviar.Location = New System.Drawing.Point(7, 49)
         Me.btnEnviar.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.btnEnviar.Name = "btnEnviar"
-        Me.btnEnviar.Size = New System.Drawing.Size(295, 24)
+        Me.btnEnviar.Size = New System.Drawing.Size(148, 24)
         Me.btnEnviar.TabIndex = 5
         Me.btnEnviar.Text = "Enviar"
         Me.btnEnviar.UseVisualStyleBackColor = False
@@ -604,6 +607,19 @@ Partial Class FrmMP
         '
         Me.Timer2.Interval = 2000
         '
+        'btnResetar
+        '
+        Me.btnResetar.BackColor = System.Drawing.SystemColors.ControlLightLight
+        Me.btnResetar.Location = New System.Drawing.Point(161, 50)
+        Me.btnResetar.Name = "btnResetar"
+        Me.btnResetar.Size = New System.Drawing.Size(141, 23)
+        Me.btnResetar.TabIndex = 9
+        Me.btnResetar.Text = "Resetar"
+        Me.btnResetar.UseVisualStyleBackColor = False
+        '
+        'TimerReset
+        '
+        '
         'FrmMP
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -682,5 +698,7 @@ Partial Class FrmMP
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents Timer2 As System.Windows.Forms.Timer
     Friend WithEvents txtTamanho As System.Windows.Forms.TextBox
+    Friend WithEvents btnResetar As System.Windows.Forms.Button
+    Friend WithEvents TimerReset As System.Windows.Forms.Timer
 
 End Class

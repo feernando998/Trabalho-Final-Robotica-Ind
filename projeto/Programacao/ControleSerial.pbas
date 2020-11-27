@@ -1,0 +1,194 @@
+program ControleSerial
+
+dim recMotor   as string[6]
+dim recDirec   as string[6]
+dim tmpOn      as integer
+dim tmpOff     as integer
+dim valor      as integer
+dim sentAntHor as boolean    'False = Sentido horário.
+dim passo      as boolean    'True = 7.5, False = 3.75
+dim motor      as integer
+dim ciclos     as integer
+
+dim ciclosMot1 as integer
+dim ciclosMot2 as integer
+dim ciclosMot3 as integer
+dim ciclosMot4 as integer
+dim ciclosMot5 as integer
+dim ciclosMot6 as integer
+
+dim inverteMot1 as boolean
+dim inverteMot2 as boolean
+dim inverteMot3 as boolean
+dim inverteMot4 as boolean
+dim inverteMot5 as boolean
+dim inverteMot6 as boolean
+
+sub procedure ciclo(dim cl as integer, dim valPorta as integer)
+
+    dim x as integer
+
+    'troca de passo entre 7.5 e 3.75 e vice-versa
+    if passo=true then
+       PORTC.3=1
+       delay_ms(15)
+       PORTC.3=0
+       passo=false
+    end if
+    
+    for x=1 to cl step 1
+        if sentAntHor=true then
+           PORTC.2=1
+        end if
+        setbit(PORTC, valPorta)
+        vdelay_ms(tmpOn)
+        clearbit(PORTC, valPorta)
+        vdelay_ms(tmpOff)
+    next x
+    
+    sentAntHor = false
+    PORTC.2 = 0
+    delay_ms(10)
+    
+    Usart_Write_Text("end/")
+
+end sub
+
+sub procedure inverteDirecao(dim inverte as boolean)
+    if inverte=true then
+       sentAntHor=false
+    else
+       sentAntHor=true
+    end if
+end sub
+
+sub procedure setDirecao(dim inverte as boolean)
+    if motor=1 then
+       inverteMot1=inverte
+    end if
+    if motor=2 then
+       inverteMot2=inverte
+    end if
+    if motor=3 then
+       inverteMot3=inverte
+    end if
+    if motor=4 then
+       inverteMot4=inverte
+    end if
+    if motor=5 then
+       inverteMot5=inverte
+    end if
+    if motor=6 then
+       inverteMot6=inverte
+    end if
+end sub
+
+main:
+TRISA=%11111111
+TRISB=%01111111
+TRISC=%00000000
+INTCON=%00000000
+ANSEL=%00000000
+ANSELH=%00000000
+
+PORTC=0
+
+tmpOn=25
+tmpOff=25
+
+sentAntHor=false 'Inicia em sentido horário
+passo=false      'Inicia em passos de 3.75
+
+Usart_Init(9600)
+
+executa:
+        if Usart_Data_Ready() > 0 then
+           Usart_Read_Text(recMotor,"\")
+           Usart_Read_Text(recDirec,"/")
+           valor = StrToInt(recMotor)
+           
+           motor = valor div 1000
+           ciclos = valor - (motor * 1000)
+           
+           if strcmp(recDirec, "inv") = 0 then  'Determina a mudança de direção.
+              sentAntHor=true
+              setDirecao(true)
+           end if
+
+           if strcmp(recDirec, "nor") = 0 then
+              sentAntHor=false
+              setDirecao(false)
+           end if
+           
+           if (valor=1000) or (valor=2000) or (valor=3000) or (valor=4000) or (valor=5000) or (valor=6000) then
+              if motor=1 then
+                 inverteDirecao(inverteMot1)
+                 ciclo(ciclosMot1, 0)
+              end if
+              if motor=2 then
+                 inverteDirecao(inverteMot2)
+                 ciclo(ciclosMot2, 1)
+              end if
+              if motor=3 then
+                 inverteDirecao(inverteMot3)
+                 ciclo(ciclosMot3, 0)
+              end if
+              if motor=4 then
+                 inverteDirecao(inverteMot4)
+                 ciclo(ciclosMot4, 1)
+              end if
+              if motor=5 then
+                 inverteDirecao(inverteMot5)
+                 ciclo(ciclosMot5, 0)
+              end if
+              if motor=6 then
+                 inverteDirecao(inverteMot6)
+                 ciclo(ciclosMot6, 1)
+              end if
+           else
+               ' MOTOR 1
+               if motor=1 then 'Envia o número de pulsos.
+                  ciclosMot1=ciclos
+                  ciclo(ciclos, 0)
+               end if
+
+               ' MOTOR 2
+               if motor=2 then 'Envia o número de pulsos.
+                  ciclosMot2=ciclos
+                  ciclo(ciclos, 1)
+               end if
+
+               ' MOTOR 3
+               if motor=3 then 'Envia o número de pulsos.
+                  ciclosMot3=ciclos
+                  ciclo(ciclos, 0)
+               end if
+
+               ' MOTOR 4
+               if motor=4 then 'Envia o número de pulsos.
+                  ciclosMot4=ciclos
+                  ciclo(ciclos, 1)
+               end if
+
+               ' MOTOR 5
+               if motor=5 then 'Envia o número de pulsos.
+                  ciclosMot5=ciclos
+                  ciclo(ciclos, 0)
+               end if
+
+               ' MOTOR 6
+               if motor=6 then 'Envia o número de pulsos.
+                  ciclosMot6=ciclos
+                  ciclo(ciclos, 1)
+               end if
+
+               if valor=7000 then  'Determina a mudança W/H.
+                  passo=true
+               end if
+           end if
+
+        end if
+        
+        goto executa
+        
+end.

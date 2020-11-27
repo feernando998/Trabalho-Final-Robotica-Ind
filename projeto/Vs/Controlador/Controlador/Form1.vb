@@ -54,6 +54,7 @@
         btnAng400.Visible = btn15
     End Sub
 
+    Dim reset As Boolean
     Dim motor As Integer
 
     Private Sub FrmMP_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -68,6 +69,7 @@
         End If
 
         cmbMotor.SelectedIndex = 0
+        reset = False
         motor = 1000
         txtTamanho.Text = txtFila.Text.Length
         alteraVisibilidade(True, True, True, True, True, True, True, True, False, False, False, False, False, False, False)
@@ -76,111 +78,74 @@
     Private Sub btnEnviar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEnviar.Click
         RealizaCalculo()
         Dim texto As String
+        Dim valor As Integer
 
-        If ((cmbMotor.SelectedIndex = 0) Or (cmbMotor.SelectedIndex = 1)) Then
-            If (Serial.IsOpen() = True) Then
-                If txtFila.Text.Length <= 1 Then
-                    If CInt(txtBoxAngulo.Text) < 0 Then
-                        texto = motor + (txtBoxCiclos.Text * 1) & "\inv/"
+        valor = motor + (txtBoxCiclos.Text * 1)
 
+        If (Serial.IsOpen() = True) And (Serial2.IsOpen() = True) And (Serial3.IsOpen() = True) Then
+            If txtFila.Text.Length <= 1 Then
+                If CInt(txtBoxAngulo.Text) < 0 Then
+                    If valor = 1000 Or valor = 2000 Or valor = 3000 Or valor = 4000 Or valor = 5000 Or valor = 6000 Then
+                        texto = valor & "\und/"
+                    Else
+                        texto = valor & "\inv/"
+                    End If
+
+                    If (motor >= 1000) And (motor < 3000) Then
                         Serial.Write(texto)
-                        txtBoxEnviado.Text = texto
-                        txtFila.Text = txtFila.Text & texto & Environment.NewLine
+                    ElseIf (motor >= 3000) And (motor < 5000) Then
+                        Serial2.Write(texto)
+                    ElseIf (motor >= 5000) And (motor < 7000) Then
+                        Serial3.Write(texto)
+                    End If
+                    txtBoxEnviado.Text = texto
+                    txtFila.Text = txtFila.Text & texto & Environment.NewLine
+                Else
+                    If valor = 1000 Or valor = 2000 Or valor = 3000 Or valor = 4000 Or valor = 5000 Or valor = 6000 Then
+                        texto = valor & "\und/"
                     Else
-                        texto = motor + (txtBoxCiclos.Text * 1) & "\nor/"
+                        texto = valor & "\nor/"
+                    End If
+
+                    If (motor >= 1000) And (motor < 3000) Then
                         Serial.Write(texto)
-                        txtBoxEnviado.Text = texto
-                        txtFila.Text = txtFila.Text & texto & Environment.NewLine
-                    End If
-                Else
-                    If CInt(txtBoxAngulo.Text) < 0 Then
-                        texto = motor + (txtBoxCiclos.Text * 1) & "\inv/"
-
-                        txtFila.Text = txtFila.Text & texto & Environment.NewLine
-                    Else
-                        texto = motor + (txtBoxCiclos.Text * 1) & "\nor/"
-
-                        txtFila.Text = txtFila.Text & texto & Environment.NewLine
-                    End If
-                End If
-                txtTamanho.Text = txtFila.Lines.Length
-            End If
-        End If
-
-        If ((cmbMotor.SelectedIndex = 2) Or (cmbMotor.SelectedIndex = 3)) Then
-            If (Serial2.IsOpen() = True) Then
-                If txtFila.Text.Length <= 1 Then
-                    If CInt(txtBoxAngulo.Text) < 0 Then
-                        texto = motor + (txtBoxCiclos.Text * 1) & "\inv/"
-
+                    ElseIf (motor >= 3000) And (motor < 5000) Then
                         Serial2.Write(texto)
-                        txtBoxEnviado.Text = texto
-                        txtFila.Text = txtFila.Text & texto & Environment.NewLine
-                    Else
-                        texto = motor + (txtBoxCiclos.Text * 1) & "\nor/"
-                        Serial2.Write(texto)
-                        txtBoxEnviado.Text = texto
-                        txtFila.Text = txtFila.Text & texto & Environment.NewLine
-                    End If
-                Else
-                    If CInt(txtBoxAngulo.Text) < 0 Then
-                        texto = motor + (txtBoxCiclos.Text * 1) & "\inv/"
-
-                        txtFila.Text = txtFila.Text & texto & Environment.NewLine
-                    Else
-                        texto = motor + (txtBoxCiclos.Text * 1) & "\nor/"
-
-                        txtFila.Text = txtFila.Text & texto & Environment.NewLine
-                    End If
-                End If
-                txtTamanho.Text = txtFila.Lines.Length
-            End If
-        End If
-
-        If ((cmbMotor.SelectedIndex = 4) Or (cmbMotor.SelectedIndex = 5)) Then
-            If (Serial3.IsOpen() = True) Then
-                If txtFila.Text.Length <= 1 Then
-                    If CInt(txtBoxAngulo.Text) < 0 Then
-                        texto = motor + (txtBoxCiclos.Text * 1) & "\inv/"
-
+                    ElseIf (motor >= 5000) And (motor < 7000) Then
                         Serial3.Write(texto)
-                        txtBoxEnviado.Text = texto
-                        txtFila.Text = txtFila.Text & texto & Environment.NewLine
-                    Else
-                        texto = motor + (txtBoxCiclos.Text * 1) & "\nor/"
-                        Serial3.Write(texto)
-                        txtBoxEnviado.Text = texto
-                        txtFila.Text = txtFila.Text & texto & Environment.NewLine
                     End If
-                Else
-                    If CInt(txtBoxAngulo.Text) < 0 Then
-                        texto = motor + (txtBoxCiclos.Text * 1) & "\inv/"
-
-                        txtFila.Text = txtFila.Text & texto & Environment.NewLine
-                    Else
-                        texto = motor + (txtBoxCiclos.Text * 1) & "\nor/"
-
-                        txtFila.Text = txtFila.Text & texto & Environment.NewLine
-                    End If
+                    txtBoxEnviado.Text = texto
+                    txtFila.Text = txtFila.Text & texto & Environment.NewLine
                 End If
-                txtTamanho.Text = txtFila.Lines.Length
+            Else
+                If CInt(txtBoxAngulo.Text) < 0 Then
+                    If valor = 1000 Or valor = 2000 Or valor = 3000 Or valor = 4000 Or valor = 5000 Or valor = 6000 Then
+                        texto = valor & "\und/"
+                    Else
+                        texto = valor & "\inv/"
+                    End If
+
+                    txtFila.Text = txtFila.Text & texto & Environment.NewLine
+                Else
+                    If valor = 1000 Or valor = 2000 Or valor = 3000 Or valor = 4000 Or valor = 5000 Or valor = 6000 Then
+                        texto = valor & "\und/"
+                    Else
+                        texto = valor & "\nor/"
+                    End If
+
+                    txtFila.Text = txtFila.Text & texto & Environment.NewLine
+                End If
             End If
+            txtTamanho.Text = txtFila.Lines.Length
         End If
 
-    End Sub
-
-    Private Sub btnInverteSent_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        If Serial.IsOpen() = True Then
-            Serial.Write("1000/")
-        End If
-        txtBoxEnviado.Text = "1000/"
     End Sub
 
     Private Sub btnWH_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnWH.Click
         If Serial.IsOpen() = True Then
-            Serial.Write("1002\")
+            Serial.Write("7000\")
+            txtBoxEnviado.Text = "7000\"
         End If
-        txtBoxEnviado.Text = "1002\"
     End Sub
 
     Private Sub btnCalcular_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCalcular.Click
@@ -418,22 +383,108 @@
                 txtFila.Select(0, txtFila.Text.IndexOf("/") + 2)
                 txtFila.SelectedText = ""
 
-                Timer2.Enabled = True
+                If reset Then
+                    TimerReset.Enabled = True
+                Else
+                    Timer2.Enabled = True
+                End If
             End If
+        End If
 
+        If Serial2.BytesToRead > 0 Then
+            txtRecebido.Text = Serial2.ReadExisting
+
+            If txtFila.Text.Length > 1 Then
+                txtFila.Select(0, txtFila.Text.IndexOf("/") + 2)
+                txtFila.SelectedText = ""
+
+                If reset Then
+                    TimerReset.Enabled = True
+                Else
+                    Timer2.Enabled = True
+                End If
+            End If
+        End If
+
+        If Serial3.BytesToRead > 0 Then
+            txtRecebido.Text = Serial3.ReadExisting
+
+            If txtFila.Text.Length > 1 Then
+                txtFila.Select(0, txtFila.Text.IndexOf("/") + 2)
+                txtFila.SelectedText = ""
+
+                If reset Then
+                    TimerReset.Enabled = True
+                Else
+                    Timer2.Enabled = True
+                End If
+            End If
         End If
     End Sub
 
     Private Sub Timer2_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer2.Tick
+        Dim texto As String
+        Dim motorStr As String
 
         If txtFila.Text.Length > 1 Then
             txtFila.Select(0, txtFila.Text.IndexOf("/") + 1)
+            texto = txtFila.SelectedText.Trim
 
-            Serial.Write(txtFila.SelectedText.Trim)
+            motorStr = txtFila.Text.Substring(0, txtFila.Text.IndexOf("\"))
+
+            If (CInt(motorStr) >= 1000) And (CInt(motorStr) < 3000) Then
+                Serial.Write(texto)
+            ElseIf (CInt(motorStr) >= 3000) And (CInt(motorStr) < 5000) Then
+                Serial2.Write(texto)
+            ElseIf (CInt(motorStr) >= 5000) And (CInt(motorStr) < 7000) Then
+                Serial3.Write(texto)
+            End If
             txtBoxEnviado.Text = txtFila.SelectedText.Trim
         End If
         txtRecebido.Text = ""
 
         Timer2.Enabled = False
+    End Sub
+
+    Private Sub btnResetar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnResetar.Click
+
+        Serial.Write("1000\und/")
+        txtBoxEnviado.Text = "1000\und/"
+
+        txtFila.Text = ""
+        txtFila.Text = txtFila.Text & "1000\und/" & Environment.NewLine
+        txtFila.Text = txtFila.Text & "2000\und/" & Environment.NewLine
+        txtFila.Text = txtFila.Text & "3000\und/" & Environment.NewLine
+        txtFila.Text = txtFila.Text & "4000\und/" & Environment.NewLine
+        txtFila.Text = txtFila.Text & "5000\und/" & Environment.NewLine
+        txtFila.Text = txtFila.Text & "6000\und/" & Environment.NewLine
+
+        reset = True
+
+    End Sub
+
+    Private Sub TimerReset_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TimerReset.Tick
+        Dim texto As String
+        Dim motorStr As String
+
+        If txtFila.Text.Length > 1 Then
+            txtFila.Select(0, txtFila.Text.IndexOf("/") + 1)
+            texto = txtFila.SelectedText.Trim
+
+            motorStr = txtFila.Text.Substring(0, txtFila.Text.IndexOf("\"))
+
+            If (CInt(motorStr) = 1000) Or (CInt(motorStr) = 2000) Then
+                Serial.Write(texto)
+            ElseIf (CInt(motorStr) = 3000) Or (CInt(motorStr) = 4000) Then
+                Serial2.Write(texto)
+            ElseIf (CInt(motorStr) = 5000) Or (CInt(motorStr) = 6000) Then
+                Serial3.Write(texto)
+            End If
+            txtBoxEnviado.Text = texto
+        End If
+        txtRecebido.Text = ""
+
+        reset = False
+        TimerReset.Enabled = False
     End Sub
 End Class
